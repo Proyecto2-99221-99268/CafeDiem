@@ -43,6 +43,7 @@ function mostrarcategoria(data){
 		C.nombre=cat.nombre;
 		C.id=cat.id;
 		C.permitirMasDeUnElemento=cat.permitirMasDeUnElemento;
+		C.pintarAlFondo=cat.pintarAlFondo;
         //var idCategoria = cat.id;
         //console.log("categoria "+cat.nombre);
 		categorias[C.id]=C;
@@ -67,6 +68,7 @@ function ordenarProductos(data){
 			categoriaOBJ = new Array();
 			productos[catID]=categoriaOBJ;
 		}
+		data[i].id=categoriaOBJ.length;
 		categoriaOBJ[categoriaOBJ.length]=data[i];
 
 	}
@@ -93,7 +95,7 @@ function resizeCanvas(){
 	var n = document.getElementById("miCanvas").offsetWidth;	
 	escenario.setWidth(n); 		
 	escenario.setHeight(n);
-	mostrarPredefinido(seleccionado,false);	
+//	mostrarPredefinido(seleccionado,false);	
 
 }
 
@@ -113,16 +115,16 @@ function cargar(){
 	var desayunoPersonalizado=[];	
 	var text = localStorage.getItem("personalizado");
 	if (text==null){
-			for (var i in productos){
-				var opcion = productos[i];	
-				var arreglo=new Array();
-				for (var j=0;j<opcion.length;j++){
-					arreglo[j]=false;
-				}
-				desayunoPersonalizado[i]=arreglo;
+		for (var i in productos){
+			var opcion = productos[i];	
+			var arreglo=new Array();
+			for (var j=0;j<opcion.length;j++){
+				arreglo[j]=false;
 			}
-			opcionesDesayunos["b0"]=desayunoPersonalizado;
+			desayunoPersonalizado[i]=arreglo;
 		}
+		opcionesDesayunos["b0"]=desayunoPersonalizado;
+	}
 	
 	else
 	{
@@ -217,10 +219,10 @@ function mostrar(){
 	var n = document.getElementById("miCanvas").offsetWidth;
   	KineticCanvas(n);
   	
-	var text = localStorage.getItem("personalizado");
-	if (text!=null){
-		prepararCanvas("b0");
-	}
+	// var text = localStorage.getItem("personalizado");
+	// if (text!=null){
+	// 	prepararCanvas("b0");
+	// }
 }
 
 
@@ -347,28 +349,26 @@ function pintarCanvas(event){
 		index++;
 	}
 	var elemento=tablaElegida[index];
-
 	var desayunoPersonalizado=opcionesDesayunos["b0"];
 	var categoria=desayunoPersonalizado[idTabla];
-	// if(categoria[id]==true){
-	// 	//document.getElementById("miCanvas").innerHTML="elemento.imagen";
-	// 	categoria[id]=false;
-	// 	quitarDibujo(elemento.nombre);
+	if(categoria[id]==true){
+		categoria[id]=false;
+		quitarDibujo(elemento.nombre);
 
-	// }else{
-	// 	//document.getElementById("miCanvas").innerHTML=elemento.imagen;
-	// 	setearDibujo(elemento.imagen,elemento.nombre, elemento.x, elemento.y, elemento.w, elemento.h,idTabla==5);
-	// 	categoria[id]=true;
+	}else{
+		//document.getElementById("miCanvas").innerHTML=elemento.imagen;
+		setearDibujo(elemento.imagen,elemento.nombre, elemento.x, elemento.y, elemento.w, elemento.h,categorias[idTabla].pintarAlFondo);
+		categoria[id]=true;
 
-	// 	if(idTabla==4 || idTabla==5){
-	// 		for(var i=0; i<tablaElegida.length; i++){
-	// 			if(i!=id && categoria[i]==true){
-	// 				categoria[i]=false;
-	// 				quitarDibujo(tablaElegida[i].nombre);
-	// 			}
-	// 		}
-	// 	}
-	// }
+		if(!categorias[idTabla].permitirMasDeUnElemento){
+			for(var i=0; i<tablaElegida.length; i++){
+				if(i!=id && categoria[i]==true){
+					categoria[i]=false;
+					quitarDibujo(tablaElegida[i].nombre);
+				}
+			}
+		}
+	}
 	actualizarEstado(check,categoria[id]);
 	calcularPrecio();
 }
@@ -384,7 +384,7 @@ function actualizarEstado(check,seleccionado){
 
 
 
-function setearDibujo(source,nombre,equis,ygriega, w, h,bandeja){
+function setearDibujo(source,nombre,equis,ygriega, w, h,pintarFondo){
 	var nuevaCapa = new Kinetic.Layer({id:nombre});
 	capas[nombre]=nuevaCapa;
 	var imagen = new Image();
@@ -401,7 +401,7 @@ function setearDibujo(source,nombre,equis,ygriega, w, h,bandeja){
     });
  	nuevaCapa.add(imgFondo);
     escenario.add(nuevaCapa);
-    if (bandeja)
+    if (pintarFondo)
     	nuevaCapa.moveToBottom() ;
     escenario.draw();
 }

@@ -1,5 +1,14 @@
 <?php
 
+$json2='[
+{"id":1,"nombre":"bebidas","permitirMasDeUnElemento":1,"pintarAlFondo":0},
+{"id":2,"nombre":"panaderia","permitirMasDeUnElemento":1,"pintarAlFondo":0},
+{"id":3,"nombre":"frutas","permitirMasDeUnElemento":1,"pintarAlFondo":0},
+{"id":4,"nombre":"dulces","permitirMasDeUnElemento":1,"pintarAlFondo":0},
+{"id":5,"nombre":"tazas","permitirMasDeUnElemento":0,"pintarAlFondo":0},
+{"id":6,"nombre":"bandejas","permitirMasDeUnElemento":0,"pintarAlFondo":1}
+]';
+
 $json='[
 {"idCategoria":1, "nombre":"leche","id":0,"precioPorUnidad":5.00,"imagen":"img/bebida/leche.png", "x":0.1, "y":0.4, "w":0.17, "h":0.17},
 {"idCategoria":1, "nombre":"cafe","id":1,"precioPorUnidad":10.00,"imagen":"img/bebida/cafe1.png","x":0.1, "y":0.6, "w":0.15, "h":0.15 },
@@ -27,9 +36,9 @@ $json='[
 {"idCategoria":6, "nombre":"canasta de madera","id":2,"precioPorUnidad":22.00,"imagen":"img/bandeja/canasta madera.png","x":0.5, "y":0.90, "w":0.8, "h":0.4}
 ]';
 
-
+echo "hola mundo";
 $productos = json_decode($json, true);
-
+$categorias=json_decode($json2,true);
 
 $server = "localhost";
 $user = "root";
@@ -37,9 +46,19 @@ $pass = "root";
 $bd = "desayunos";
 
 //Creamos la conexión
-$conexion = mysqli_connect($server, $user, $pass,$bd) ;
-//or die("Ha sucedido un error inexperado en la conexion de la base de datos");
+$conexion = mysqli_connect($server, $user, $pass,$bd) 
+or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
+$i=0;
+echo "cargue la categoria"+ $i;
+foreach ($categorias as $categoria) {
+   //echo "hola"; 
+    mysqli_query($conexion,"INSERT INTO categorias (id,nombre,permitirMasDeUnElemento,pintarAlFondo) 
+    VALUES ('".$categoria['id']."','".$categoria['nombre']."',".$categoria['permitirMasDeUnElemento'].",'".$categoria['pintarAlFondo']."')");	
+    echo "cargue la categoria"+ $i;
+    $i++;
+        
+}	
 
 foreach ($productos as $producto) {
    //echo "hola"; 

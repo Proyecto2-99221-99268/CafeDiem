@@ -19,3 +19,5 @@ Route::get('/productos/all', 'ProductosController@index');
 Route::get('/categorias/all', 'CategoriasController@index');
 
 Route::get('/productos/{id}','ProductosController@dame');
+
+	
