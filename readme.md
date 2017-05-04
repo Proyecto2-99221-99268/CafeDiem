@@ -1,3 +1,32 @@
+para poder usar el proyecto debemos hacer un 
+  
+  composer install
+
+  crear una base de datos llamada desayunos
+  
+  php artisan migrate
+  
+El archivo que carga la base de datos se encuentra en cargarBaseDeDatos/index.php 
+en este archivo se conecta a una base de datos llamada desayunos con usuario root y contraseña root.
+para poder ejecutar ese php podemos crear un nuevo directorio en htdocs y copiar el index.php dentro. Luego tenemos que configurar el httpd.conf (apache/conf/httpd.conf) de apache en directory para que el directorio recién creado sea el que se ejecute.
+Por ejemplo si creamos C:/xampp/htdocs/cargarBD/index.php
+encontraremos dentro de httpd.conf algo del estilo:
+
+# DocumentRoot: The directory out of which you will serve your
+# documents. By default, all requests are taken from this directory, but
+# symbolic links and aliases may be used to point to other locations.
+#
+DocumentRoot "C:/xampp/htdocs/jsonMysql"
+<Directory "C:/xampp/htdocs/jsonMysql">
+
+lo debemos cambiar por
+
+DocumentRoot "C:/xampp/htdocs/cargarBD"
+<Directory "C:/xampp/htdocs/cargarBD">
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
