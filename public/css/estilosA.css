@@ -1,0 +1,284 @@
+
+
+header{
+	/*background:#000055;*/
+	color:#fff;  /*color de la letra*/
+	font-style: arial;
+	
+}
+
+h4{
+	font-family: smile;
+	font-size: 35px;
+}
+
+h1{
+	font-family:'Verna';
+}
+
+h3{
+	font-family: smile;
+	font-size:40px;
+	color: white;
+}
+.dam {
+	margin-top: 5px;
+	text-align: right;
+}
+.navClass{
+	color:white;
+	font-size: 23px;
+	font-family: gh;
+}
+
+@font-face {
+    font-family: gh;
+    src: url(../fuentes/GrandHotel-Regular.ttf);
+}
+@font-face {
+    font-family: smile;
+    src: url(../fuentes/Smiley.ttf);
+}
+
+
+@font-face {
+    font-family: junction;
+    src: url(../fuentes/Junction_02.ttf);
+}
+h1{
+	text-align: left;
+	font-family: gh;
+	line-height: 90px;
+}
+#logoDIV{
+    	margin-top: 5px; 
+    }
+@media all and (min-width: 767px) {
+
+    h1 {
+      font-size: 8vw;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .dam {
+	display: none;
+	}
+
+    #logoDIV{
+    	display: none;
+    	margin-top: 5px; 
+    }
+    h1 {
+      font-size: 14vw;
+      text-align: center;
+    }
+}
+
+body{
+
+	background-image: url(../imagenes/cafe5.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#navegacion{
+	background-color:transparent;
+	padding-top: 7px;
+	padding-bottom: 7px;
+
+	border: 1px solid #fff;
+	border-radius: 10px;
+}
+
+
+ 
+ 
+
+
+
+#miCanvas{
+	border: 5px solid #fff;
+	border-radius: 15px;
+	background-color: silver;
+	background-image: url("../imagenes/corcho.jpg");
+	background-size: cover;
+}
+
+
+aside{
+	background-color: #82abab;
+	color: #000;
+	border: 5px solid #fff;
+	border-radius: 15px;
+
+
+}
+.a {
+	height: 500px;
+}
+footer{
+	/*background: #16a085;*/
+	background-color: #000;
+	color: #fff;
+	
+	border-radius:10px 10px 0px 0px;
+
+}
+
+.tablilla{
+	background:transparent;
+}
+
+div{
+	background-color: transparent;
+}
+
+.imagen{
+	width:8em ;
+	height: 8em;
+	background-color: #000;
+}
+
+
+.noMargin{
+	margin: 0px;
+}
+
+.cartel{
+	display:none;
+	width: 20px;
+	height: 20px;
+	background-color: #00000f;
+}
+.precioPorUnidad{
+	color : white;
+	font-size: 18px;
+}
+
+
+#facebox .content {
+    background-color: #FFB660;
+}
+#facebox .modal-header {
+    background-color: #FFB660;
+}
+#facebox .modal-footer {
+    background-color: #FFB660;
+}
+
+#precio{
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: black;
+
+}
+
+.resaltar:hover {
+   	background-color: #aaaaaa;
+
+}
+#borrar{
+	background-image: url("../imagenes/botones/borrar.png");
+}
+#guardar{
+	background-image: url("../imagenes/botones/guardar.png");
+}
+#cargar{
+	background-image: url("../imagenes/botones/cargar.png");
+}
+#comprar{
+	background-image: url("../imagenes/botones/comprar.png");
+}
+#cambiarCSS{
+	background-image: url("../imagenes/botones/cambiar.png");
+
+}
+.botones {
+	background-color: transparent;
+	background-size: cover;
+	padding: 0px;
+	width: 80px;
+	height: 80px;
+}
+.radioChico{
+	border-radius: 15px;	
+}
+.radioGrande{
+	border-radius: 50px;	
+}
+.radioChico{
+	border-radius: 5px;	
+}
+.radioGrande{
+	border-radius: 70px;	
+}
+
+h1{
+	text-align: center;
+	line-height: 90px;
+}
+@media all and (min-width: 767px) {
+
+    h1 {
+      font-size: 8vw;
+    }
+       .imagen{
+	width:12vw ;
+	height: 12vw;
+	padding: 3px;
+	background-color: #000;
+}
+}
+
+@media all and (max-width: 767px) {
+
+    h1 {
+      font-size: 14vw;
+    }
+    .imagen{
+		width: 25vw ;
+		height: 25vw;
+		padding: 3px;
+		background-color: #000;
+	}
+}
+.footerA{
+	text-align: center;
+	margin: 0px;
+	padding-top: 3px;	
+	font-family: gh;
+	font-size: 25px;
+}
+.noPadding{
+padding: 0px 0px 0px 0px;
+
+}
+.noPaddingLeft{
+	padding-left: 0px;
+}
+.PaddingLeft{
+	padding-left: 5px;
+}
+.noPaddingCostado{
+	padding-left: 1px;
+	padding-right: 1px;
+	text-align: center;
+}
+.mt5{
+	margin-top: 5px;
+}
+#navegacion{
+	margin-bottom: 2px;
+}
+.presentacion{
+	background: black;
+	color:white;
+	font-style: oblique;
+	margin: 1px;
+	margin-bottom: 1px;
+	font-size: 4.3vw;
+	padding: 7px;
+}

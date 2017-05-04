@@ -1,0 +1,251 @@
+header{
+	/*background-image: url("../imagenes/header.jpg");*/
+	color : white;
+	font-family: "Verdana";
+}
+.contenedorH1{
+	position:relative;
+}
+
+h4{
+	font-family: smile;
+	font-size: 35px;
+}
+#logo{
+	float:left;
+
+}
+#navegacion{
+	margin-bottom: 2px;
+}
+.navClass{
+	color:white;
+	font-size: 21px;
+	font-family: gh;
+}
+.nav-pills>li.active>a:hover{
+	color:black;
+	background-color: #ece;
+}
+.nav-pills>li.active>a{
+	background-color: black;
+	color:red;
+}
+h3{
+	font-family: smile;
+	font-size:40px;
+}
+body{
+	background-image: url("../imagenes/fondo.jpg");
+	background-attachment: fixed;
+}
+
+
+aside{
+	background:#d94c3a;
+	color: #fff;
+	border: 2px solid #fff;
+	border-radius: 5px;
+	margin-bottom: 5px;
+
+
+}
+.a {
+	height: 500px;
+}
+footer{
+	background: black;
+	color: white;
+	border-radius:10px 10px 0px 0px;
+	margin-top: 10px;
+}
+
+.barra {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.barraContenedora{
+	background-color: transparent;
+}
+.botonesBarra{
+	background: #dcc19d;
+	color: #39251c;
+	font-family: verdana;
+	
+}
+.botonesBarra:hover{
+	background: #D2691E;
+	color: #320000;
+	
+	 
+}
+/*.botonesBarra:active{
+	background: #A0522D;
+	color: #FFFFF0;
+
+}
+*/
+
+
+#miCanvas{
+	border: 2px solid #000;
+	border-radius: 5px;
+	background-image: url("../imagenes/fondoCanvas.jpg");
+	background-size: cover;
+
+
+}
+
+.noPadding{
+padding: 0px 0px 0px 0px;
+
+}
+
+.noMargin{
+	margin: 0px 0px 0px 0px;
+}
+
+.cartel{
+	width: 20px;
+	height: 20px;
+	background-color: #dddddd;
+}
+
+.precioPorUnidad{
+	color : black;
+}
+
+.resaltar:hover {
+   	background-color: #B3794E;
+   	
+}
+
+#precio{
+	color: #fff;
+	font-size: 20px;
+}
+.precioPorUnidad{
+	color: #fff;
+	font-family: smile;
+	font-size: 25px;
+	font-weight: bold;
+}
+@font-face {
+    font-family: gh;
+    src: url(../fuentes/GrandHotel-Regular.ttf);
+}
+@font-face {
+    font-family: smile;
+    src: url(../fuentes/Smiley.ttf);
+}
+
+
+@font-face {
+    font-family: junction;
+    src: url(../fuentes/Junction_02.ttf);
+}
+h1{
+	text-align: left;
+	font-family: gh;
+}
+#logoDIV{
+    	margin-top: 5px; 
+    }
+@media all and (min-width: 767px) {
+
+    h1 {
+      font-size: 8vw;
+    }
+        .sizeLetra{
+    	font-size: 26px; 
+    }
+    .imagen{
+	width:12vw ;
+	height: 12vw;
+	padding: 3px;
+	background-color: #000;
+}
+}
+
+@media all and (max-width: 767px) {
+	.imagen{
+		width: 25vw ;
+		height: 25vw;
+		padding: 3px;
+		background-color: #000;
+	}
+    .sizeLetra{
+    	font-size: 4.3vw; 
+    }
+    .dam{
+	display: none;
+	}	
+    #logoDIV{
+    	display: none;
+    	margin-top: 5px; 
+    }
+    h1 {
+      font-size: 14vw;
+      text-align: center;
+    }
+}
+#borrar{
+	background-image: url("../imagenes/botones/borrar.png");
+}
+#guardar{
+	background-image: url("../imagenes/botones/guardar.png");
+}
+#cargar{
+	background-image: url("../imagenes/botones/cargar.png");
+}
+#comprar{
+	background-image: url("../imagenes/botones/comprar.png");
+}
+#cambiarCSS{
+	background-image: url("../imagenes/botones/cambiar.png");
+
+}
+.botones {
+	background-color: transparent;
+	background-size: cover;
+	padding: 0px;
+	width: 80px;
+	height: 80px;
+}
+.radioChico{
+	border-radius: 15px;	
+}
+.radioGrande{
+	border-radius: 50px;	
+}
+.noPaddingLeft{
+	padding-left: 0px;
+}
+.PaddingLeft{
+	padding-left: 5px;
+}
+.noPaddingCostado{
+	padding-left: 1px;
+	padding-right: 1px;
+	text-align: center;
+}
+.footerA{
+	text-align: center;
+	margin: 0px;
+	padding-top: 3px;	
+	font-family: gh;
+	font-size: 25px;
+}
+.dam{
+	text-align: right;
+}
+.mt5{
+	margin-top: 5px;
+}
+.presentacion{
+	color:white;
+	font-style: oblique;
+	margin: 1px;
+	font-size: 4.3vw;
+	padding: 10px;
+}
