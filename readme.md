@@ -1,4 +1,4 @@
-para poder usar el proyecto debemos hacer un 
+<p>para poder usar el proyecto debemos hacer un 
   
   composer install
 
@@ -24,7 +24,7 @@ lo debemos cambiar por
 DocumentRoot "C:/xampp/htdocs/cargarBD"
 <Directory "C:/xampp/htdocs/cargarBD">
 
-
+</p>
 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
