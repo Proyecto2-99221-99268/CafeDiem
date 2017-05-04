@@ -12,10 +12,7 @@ para poder ejecutar ese php podemos crear un nuevo directorio en htdocs y copiar
 Por ejemplo si creamos C:/xampp/htdocs/cargarBD/index.php
 encontraremos dentro de httpd.conf algo del estilo:
 
-# DocumentRoot: The directory out of which you will serve your
-# documents. By default, all requests are taken from this directory, but
-# symbolic links and aliases may be used to point to other locations.
-#
+
 DocumentRoot "C:/xampp/htdocs/jsonMysql"
 <Directory "C:/xampp/htdocs/jsonMysql">
 
