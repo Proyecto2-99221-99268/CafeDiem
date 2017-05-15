@@ -175,14 +175,6 @@ function modificar (event){
 		index++;
 	}
 	var elemento=tablaElegida[index];
-	//ir a /productos/{id}
-	var form = document.createElement('form');
-    form.setAttribute('method', 'post');
-    form.setAttribute('action', 'http://localhost:8000/productos/'+elemento.idBD);
-    form.style.display = 'hidden';
-    document.body.appendChild(form);
-    form.submit();
-    
-        // window.location='http://localhost/productos/'+elemento.idBD;
+    window.location='http://localhost:8000/productos/'+elemento.idBD;
     
 }

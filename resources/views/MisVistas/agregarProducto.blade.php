@@ -13,7 +13,7 @@
   
   <h3>  ingrese el producto</h3>
   <hr>
-  <form method="POST" action="/productos" id="bootstrapSelectForm"  enctype="multipart/form-data">
+  <form method="POST" action="/productos/crear" id="bootstrapSelectForm"  enctype="multipart/form-data">
 	  {{csrf_field()}}
 	  <div class="form-group">
 	    <label for="nombre">Nombre</label>
@@ -23,7 +23,6 @@
 	    <label for="precio">precio</label>
 	    <input type="number" min="0" step="0.01" required class="form-control" name="precio" id="precio" placeholder="0.00">
 	  </div>
-	  <div class="form-group">
 	  <div class="form-group">
 	    <label>Categoria</label>
 	    <select name="Categoria" id="Categoria" class="form-control selectpicker"></select>

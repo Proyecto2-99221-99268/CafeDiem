@@ -12,18 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('MisVistas.listar');
+    return view('MisVistas.inicial');
 });
 Route::get('/agregarProducto', function () {
     return view('MisVistas.agregarProducto');
 });
+Route::get('/listar', function () {
+    return view('MisVistas.listar');
+});
 
-Route::get('/productos/all', 'ProductosController@index');
 Route::get('/categorias/all', 'CategoriasController@index');
 
-Route::any('/productos/{id}','ProductosController@dame');
-
-Route::post('/productos','ProductosController@create');
-
-
+Route::get('/productos/all', 'ProductosController@index');
+Route::get('/productos/{id}','ProductosController@get');
+Route::post('/productos/crear','ProductosController@create');
+Route::post('/productos/edit','ProductosController@edit');
 	

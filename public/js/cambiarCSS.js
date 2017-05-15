@@ -7,7 +7,7 @@ function cargarCSS(){
 	var estilo = localStorage.getItem("css");
   	if (estilo == null){
   		//por defecto se carga este css
-	  	estilo = "css/estilosB.css"
+	  	estilo = "/css/estilosB.css"
 	  	document.getElementById("cssArchivo").href=estilo;
 	}
 	else
@@ -21,10 +21,10 @@ function cargarCSS(){
 
 function cambiarArchivoCss() { 
 	var estilo = localStorage.getItem("css");
-	if (estilo == null | estilo == "css/estilosB.css")
-		estilo = "css/estilosA.css";
+	if (estilo == null | estilo == "/css/estilosB.css")
+		estilo = "/css/estilosA.css";
 	else //es estilosA
-		estilo = "css/estilosB.css";
+		estilo = "/css/estilosB.css";
 	document.getElementById("cssArchivo").href=estilo;
 	localStorage.removeItem("css");
 	localStorage.setItem("css",estilo);

@@ -15,12 +15,6 @@
 			</ul>
 
 			<div class="tab-content" id="categoria_contenedora">
-			 
-			</div>			
-		<form id="formulario" style="display:hidden;"  method="post" >
-		  {{csrf_field()}}
-
-		</form>
 
 		</aside>
 	</div>
