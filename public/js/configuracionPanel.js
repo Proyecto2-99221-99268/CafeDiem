@@ -34,6 +34,9 @@ function pedirProductos(){
     });
 };
 
+$(function(){
+	mostrar();
+});
 
 function mostrarcategoria(data){
 	//var tabla = $("#tabla");
@@ -82,8 +85,7 @@ function ordenarProductos(data){
 
 
 function iniciar(){
-	cargarCSS();
-	mostrar();
+
 	
 	$( window ).resize(function() {
 			resizeCanvas();//console.log( "me cambiaron el tamañooooo" );	

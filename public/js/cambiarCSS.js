@@ -1,3 +1,8 @@
+$(function(){
+	cargarCSS();
+}
+);
+
 function cargarCSS(){
 	var estilo = localStorage.getItem("css");
   	if (estilo == null){
