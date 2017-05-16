@@ -40,21 +40,22 @@ class ProductosController extends Controller
     	//dd($request);
     }
     public function edit (Request $request ){
-        if ($request->imagen != null){
+        //dd($request->file('imagen'));
+        if ($request->file('imagen') == null){
+            $IMG=Productos::where('id', $request->id)->first()->select('imagen');
+        }
+        else{
             $IMG='img/'.$request->nombre.'.'.$request->imagen->getClientOriginalExtension();
             $imagen= request()->file('imagen');
             $nombreImagen = $request->nombre.'.'.$request->imagen->getClientOriginalExtension();
             $destinationPath = public_path('img');
             $imagen->move($destinationPath, $nombreImagen);
         }
-        else{
-            $IMG=Productos::where('id', $request->id)->first()->select('imagen');
-        }
 
 
         $producto = Productos::where('id', $request->id)->first()
-        ->update(['nombre' => $request->nombre,'idCategoria'=> $request->idCategoria],
-            ['precio'=>$request->precio], ['imagen' =>$IMG,'x'=>$request->x,'y'=>$request->y,'w'=>$request->w,'h'=>$request->h]
+        ->update(['nombre' => $request->nombre,'idCategoria'=> $request->idCategoria,
+            'precio'=>$request->precio, 'imagen' =>$IMG,'x'=>$request->x,'y'=>$request->y,'w'=>$request->w,'h'=>$request->h]
             );
         
         return redirect()->to('/listar');
