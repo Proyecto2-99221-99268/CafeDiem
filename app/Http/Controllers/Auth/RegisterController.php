@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\Bienvenido;
 
 class RegisterController extends Controller
 {
@@ -62,10 +63,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // return
+        $user  = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'esAdmin' =>0,
             'password' => bcrypt($data['password']),
         ]);
+
+         \Mail::to($user)->send(new Bienvenido($user));
+
+         return $user;
     }
+
+    // public function store(){
+    //     $this->validate(request(), [
+    //         'name' => 'required',
+    //         'email' => 'required|email',
+    //         'password' => 'required|confirmed'
+    //     ]);
+
+    //     $user= User::create(
+    //         request(['name', 'email', 'password'])
+    //     );
+
+    //     auth()->login($user);
+        
+    //             \Mail::to($user)->send(new Email);
+        
+    //             return redirect()->home();
+    // }
 }

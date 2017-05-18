@@ -12,19 +12,44 @@
 */
 
 Route::get('/', function () {
-    return view('MisVistas.inicial');
+    return view('MisVistas.index');
 });
 Route::get('/agregarProducto', function () {
     return view('MisVistas.agregarProducto');
 });
-Route::get('/listar', function () {
-    return view('MisVistas.listar');
-});
 
 Route::get('/categorias/all', 'CategoriasController@index');
 
+Route::get('productos/listar','ProductosController@listar');
 Route::get('/productos/all', 'ProductosController@index');
 Route::get('/productos/{id}','ProductosController@get');
 Route::post('/productos/crear','ProductosController@create');
 Route::post('/productos/edit','ProductosController@edit');
 	
+
+	Auth::routes();
+
+// Route::get('/home', function (){
+// 	return view ('MisVistas.index');
+// });
+
+Auth::routes();
+
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider')->name('github');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+
+Route::get('administrador', 'paginaAdministrador@retornarPagina');
+
+Auth::routes();
+
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::any('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::get('generarURL', 'URL@generar');

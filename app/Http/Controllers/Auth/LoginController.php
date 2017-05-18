@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\SocialAccountService;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,64 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // public function redirectTo(){
+
+    //     $user=Auth::user();
+        
+    //     if ($user->esAdmin)
+    //         return redirect()->to('/productos/listar');
+    // }
+    protected function authenticated(Request $request, $user)
+    {
+        if ( $user->esAdmin ) {// do your margic here
+            return redirect()->to('productos/listar');
+        }
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    // public function redirectToProvider()
+    // {
+    //     return Socialite::driver('github')->redirect();
+    // }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    // public function handleProviderCallback()
+    // {
+    //     $github = Socialite::driver('github')->user();
+
+    //     $user = User::whereEmail($github->getEmail())->first();    
+
+    //     if (!$user) {
+    //         $user = User::create([
+    //             'email' => $github->getEmail(),
+    //             'name' => $github->getName(),
+    //             'password' => 'password',
+    //         ]);
+    //     }
+
+    //     auth()->login($user);
+
+    //     return redirect()->to('/home');
+    // }
+    // public function redirectToProviderFacebook(){
+    //         return Socialite::driver('facebook')->redirect(); 
+    // }
+    //  public function handleProviderCallbackFacebook(SocialAccountService $service){
+    //     $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
+
+    //     auth()->login($user);
+
+    //     return redirect()->to('/home');
+    //     }
+    
+
 }

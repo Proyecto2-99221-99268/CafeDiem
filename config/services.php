@@ -14,6 +14,12 @@ return [
     |
     */
 
+    'github' => [
+    'client_id' => 'ca96ea63f7454a9b11ec',
+    'client_secret' => '6b2c35eaec8f8be67e067df82b98429b1248c0e8',
+    'redirect' => 'http://127.0.0.1/login/github/callback',
+],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
@@ -24,6 +30,11 @@ return [
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
+    'facebook' => [
+    'client_id' => '1499958370015713',
+    'client_secret' => '2eac9e9ccdff0ec2cf3c20a655b797a7',
+    'redirect' => 'http://localhost/login/facebook/callback',
+],
 
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),

@@ -9,8 +9,16 @@ use App\http\Controllers\imagen;
 
 class ProductosController extends Controller
 {
+    
+    public function __construct(){
+        $this->middleware('admin', ['except' => ['index']]);  
+      }
+
     public function index(){
     	return Productos::all();
+    }
+    public function listar(){
+        return view('MisVistas.listar'); 
     }
 
     public function get($id){

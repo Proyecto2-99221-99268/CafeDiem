@@ -3,6 +3,7 @@
 @section('header')
     <title>Listar Productos - Cafe Diem </title>
   	<script src="{{ asset('js/listar.js')}}"></script>
+  	
 
 @stop
 
