@@ -15,9 +15,11 @@ class CreatePertenecesTable extends Migration
     {
         Schema::create('perteneces', function (Blueprint $table) {
             $table->integer('idDesayuno');
+            $table->integer('idCategoria');
             $table->integer('idProductos')->unsigned();
            
             $table->foreign('idDesayuno')->references('id')->on('personalizados');
+            $table->foreign('idCategoria')->references('id')->on('productos');
             $table->foreign('idProductos')->references('id')->on('productos');
 
             $table->timestamps();
@@ -25,6 +27,7 @@ class CreatePertenecesTable extends Migration
 
        Schema::table('perteneces', function(Blueprint $table) {
             $table->foreign('idDesayuno')->references('id')->on('personalizados');
+            $table->foreign('idCategoria')->references('id')->on('productos');
             $table->foreign('idProductos')->references('id')->on('productos');     
         });
     }

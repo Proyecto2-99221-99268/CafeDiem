@@ -195,39 +195,41 @@ function cargar(){
 
 
 
-// function crearPredefinidos(){
-// 	for (var i in predefinidos){
-// 	 	var desayun=crearDesayunoVacio();
-// 	 	var desayunoPredefinido = predefinidos[i];
-// 	 	for (var j in productos ){
-// 	 		for(var k=0; k< productos[j].length; k++){
-// 	 			var idP=productos[j][k].id;
-// 	 		}
-// 	 		var idP = desayunoPredefinido[j];
-// 	 		var idC = productos
-// 	 	}
+function crearPredefinidos(){
+	for (var i in predefinidos){
+	 	var desayun=crearDesayunoVacio();
+	 	var desayunoPredefinido = predefinidos[i];
+	 	for (var j in productos ){
+	 		for(var k=0; k< productos[j].length; k++){
+	 			var idP=productos[j][k].id;
+	 			
+
+	 		}
+	 		var idP = desayunoPredefinido[j];
+	 		var idC = productos
+	 	}
 
 
-// 	 	}
-// 	 	opcionesDesayunos["b"+(k+1)]=desayun;
-// 	}
+	 	}
+	 	opcionesDesayunos["b"+(k+1)]=desayun;
+	}
 
 
-// 	for (var k = 0; k <predefinidos.length; k++) {
-// 	 	var desayun=crearDesayunoVacio();
-// 	 	var d=predefinidos[k];
-// 	 	for(var j=0; j<d.length; j++){
-// 	 		var categoria=d[j]; 
-// 	 		var catdes=desayun[j];
-// 	 		for (var i = 0; i <categoria.length ; i++) {
-// 	 			catdes[categoria[i].id]=true;
-// 	 		}
-// 	 	}
-// 	 	opcionesDesayunos["b"+(k+1)]=desayun;
-// 	 }
+	for (var k = 0; k <predefinidos.length; k++) {
+	 	var desayun=crearDesayunoVacio();
+	 	var d=predefinidos[k];
+	 	for(var j=0; j<d.length; j++){
+	 		var categoria=d[j]; 
+	 		var catdes=desayun[j];
+	 		for (var i = 0; i <categoria.length ; i++) {
+	 			catdes[categoria[i].id]=true;
+	 		}
+	 	}
+	 	opcionesDesayunos["b"+(k+1)]=desayun;
+	 }
 		
 
-// }
+}
 function prepararCanvas(N){
 	eliminarDibujos();
 	limpiarInputs();

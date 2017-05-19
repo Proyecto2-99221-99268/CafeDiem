@@ -1,47 +1,47 @@
 <?php
 $json4='[
-{"idDesayuno":1, "idProductos":29},
-{"idDesayuno":1, "idProductos":30},
-{"idDesayuno":1, "idProductos":31},
-{"idDesayuno":1, "idProductos":35},
-{"idDesayuno":1, "idProductos":36},
-{"idDesayuno":1, "idProductos":39},
-{"idDesayuno":1, "idProductos":40},
-{"idDesayuno":1, "idProductos":43},
-{"idDesayuno":1, "idProductos":44},
-{"idDesayuno":1, "idProductos":49},
-{"idDesayuno":1, "idProductos":55},
+{"idDesayuno":1,  "idCategoria":1, "idProductos":29},
+{"idDesayuno":1, "idCategoria":1,  "idProductos":30},
+{"idDesayuno":1, "idCategoria":1,  "idProductos":31},
+{"idDesayuno":1,  "idCategoria":2, "idProductos":35},
+{"idDesayuno":1,  "idCategoria":2, "idProductos":36},
+{"idDesayuno":1,  "idCategoria":2, "idProductos":39},
+{"idDesayuno":1, "idCategoria":3,  "idProductos":40},
+{"idDesayuno":1, "idCategoria":4,  "idProductos":43},
+{"idDesayuno":1,  "idCategoria":4, "idProductos":44},
+{"idDesayuno":1,  "idCategoria":5, "idProductos":50},
+{"idDesayuno":1,  "idCategoria":6, "idProductos":55},
 
-{"idDesayuno":2, "idProductos":29},
-{"idDesayuno":2, "idProductos":30},
-{"idDesayuno":2, "idProductos":31},
-{"idDesayuno":2, "idProductos":35},
-{"idDesayuno":2, "idProductos":36},
-{"idDesayuno":2, "idProductos":39},
-{"idDesayuno":2, "idProductos":40},
-{"idDesayuno":2, "idProductos":43},
-{"idDesayuno":2, "idProductos":44},
-{"idDesayuno":2, "idProductos":49},
-{"idDesayuno":2, "idProductos":55},
+{"idDesayuno":2,  "idCategoria":1, "idProductos":29},
+{"idDesayuno":2, "idCategoria":1,  "idProductos":30},
+{"idDesayuno":2, "idCategoria":1,  "idProductos":31},
+{"idDesayuno":2,  "idCategoria":2, "idProductos":35},
+{"idDesayuno":2,  "idCategoria":2, "idProductos":36},
+{"idDesayuno":2, "idCategoria":2,  "idProductos":39},
+{"idDesayuno":2, "idCategoria":3,  "idProductos":40},
+{"idDesayuno":2, "idCategoria":4,  "idProductos":43},
+{"idDesayuno":2, "idCategoria":4,  "idProductos":44},
+{"idDesayuno":2, "idCategoria":5,  "idProductos":49},
+{"idDesayuno":2,  "idCategoria":6, "idProductos":55},
 
-{"idDesayuno":3, "idProductos":29},
-{"idDesayuno":3, "idProductos":30},
-{"idDesayuno":3, "idProductos":31},
-{"idDesayuno":3, "idProductos":32},
-{"idDesayuno":3, "idProductos":33},
-{"idDesayuno":3, "idProductos":35},
-{"idDesayuno":3, "idProductos":37},
-{"idDesayuno":3, "idProductos":38},
-{"idDesayuno":3, "idProductos":39},
-{"idDesayuno":3, "idProductos":40},
-{"idDesayuno":3, "idProductos":41},
-{"idDesayuno":3, "idProductos":42},
-{"idDesayuno":3, "idProductos":43},
-{"idDesayuno":3, "idProductos":44},
-{"idDesayuno":3, "idProductos":45},
-{"idDesayuno":3, "idProductos":46},
-{"idDesayuno":3, "idProductos":53},
-{"idDesayuno":3, "idProductos":54}
+{"idDesayuno":3, "idCategoria":1,  "idProductos":29},
+{"idDesayuno":3, "idCategoria":1,  "idProductos":30},
+{"idDesayuno":3, "idCategoria":1,  "idProductos":31},
+{"idDesayuno":3, "idCategoria":1,  "idProductos":32},
+{"idDesayuno":3, "idCategoria":1,  "idProductos":33},
+{"idDesayuno":3, "idCategoria":2,  "idProductos":35},
+{"idDesayuno":3, "idCategoria":2,  "idProductos":37},
+{"idDesayuno":3, "idCategoria":2,  "idProductos":38},
+{"idDesayuno":3, "idCategoria":2,  "idProductos":39},
+{"idDesayuno":3, "idCategoria":3,  "idProductos":40},
+{"idDesayuno":3, "idCategoria":3,  "idProductos":41},
+{"idDesayuno":3, "idCategoria":3,  "idProductos":42},
+{"idDesayuno":3, "idCategoria":4,  "idProductos":43},
+{"idDesayuno":3, "idCategoria":4,  "idProductos":44},
+{"idDesayuno":3, "idCategoria":4,  "idProductos":45},
+{"idDesayuno":3, "idCategoria":4,  "idProductos":46},
+{"idDesayuno":3, "idCategoria":5,  "idProductos":53},
+{"idDesayuno":3, "idCategoria":6,  "idProductos":54}
 
 ]';
 
@@ -133,12 +133,11 @@ echo "cargue la categoria"+ $i;
 
 foreach ($perteneces as $pertenece) {
    //echo "hola"; 
-    mysqli_query($conexion,"INSERT INTO perteneces (idDesayuno, idProductos) 
-    VALUES ('".$pertenece["idDesayuno"]."','".$pertenece["idProductos"] ."')"
-
-    );	
+    mysqli_query($conexion,"INSERT INTO perteneces (idDesayuno,idCategoria, idProductos) 
+    VALUES ('".$pertenece["idDesayuno"]."','".$pertenece["idCategoria"]."',
+    		'".$pertenece["idProductos"]."')");	
     
-    echo "mi novia es hermosa";    
+     
 }	
 
 
