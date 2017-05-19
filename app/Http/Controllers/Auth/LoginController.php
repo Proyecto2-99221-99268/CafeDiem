@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/index';
+  //  protected $redirectTo = 'index';
 
     /**
      * Create a new controller instance.
@@ -52,6 +52,8 @@ class LoginController extends Controller
         if ( $user->esAdmin ) {// do your margic here
             return redirect()->to('productos/listar');
         }
+        else
+            return redirect()->to('/');
     }
 
     /**
@@ -59,44 +61,44 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    // public function redirectToProvider()
-    // {
-    //     return Socialite::driver('github')->redirect();
-    // }
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
 
     /**
      * Obtain the user information from GitHub.
      *
      * @return Response
      */
-    // public function handleProviderCallback()
-    // {
-    //     $github = Socialite::driver('github')->user();
+    public function handleProviderCallback()
+    {
+        $github = Socialite::driver('github')->user();
 
-    //     $user = User::whereEmail($github->getEmail())->first();    
+        $user = User::whereEmail($github->getEmail())->first();    
 
-    //     if (!$user) {
-    //         $user = User::create([
-    //             'email' => $github->getEmail(),
-    //             'name' => $github->getName(),
-    //             'password' => 'password',
-    //         ]);
-    //     }
+        if (!$user) {
+            $user = User::create([
+                'email' => $github->getEmail(),
+                'name' => $github->getName(),
+                'password' => 'password',
+            ]);
+        }
 
-    //     auth()->login($user);
+        auth()->login($user);
 
-    //     return redirect()->to('/home');
-    // }
-    // public function redirectToProviderFacebook(){
-    //         return Socialite::driver('facebook')->redirect(); 
-    // }
-    //  public function handleProviderCallbackFacebook(SocialAccountService $service){
-    //     $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
+        return redirect()->to('/home');
+    }
+    public function redirectToProviderFacebook(){
+            return Socialite::driver('facebook')->redirect(); 
+    }
+     public function handleProviderCallbackFacebook(SocialAccountService $service){
+        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
-    //     auth()->login($user);
+        auth()->login($user);
 
-    //     return redirect()->to('/home');
-    //     }
+        return redirect()->to('/home');
+        }
     
 
 }

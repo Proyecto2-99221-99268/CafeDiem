@@ -17,11 +17,8 @@
 			</h3>
 		</div>
 		<nav id="navegacion" class="navbar navbar-default barraContenedora radioChico" role="navigation">
-			<div class="navbar-header col-xs-12 col-sm-12 col-md-12 barra radioChico">
-              <button type="button" id="b3" class="btn btn-default DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Matero</button>
-			  <button type="button" id="b1" class="btn btn-default DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Clásico</button>
-			  <button type="button" id="b2" class="btn btn-default DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Especial</button>
-			  <button type="button" id="b0" class="btn btn-default active DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Personalizado</button>
+			<div id="modelos" class="navbar-header col-xs-12 col-sm-12 col-md-12 barra radioChico">
+              <button type="button" id="b0" class="btn btn-default active DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Personalizado</button>
 			</div>
 		</nav>
 

@@ -6,7 +6,7 @@ var desayunos=new Object();
 var seleccionado = "b0";
 var opcionesDesayunos=[];
 var precio=0;
-var predefinidos=[];
+var predefinidos=new Object();
 
 var capas = [];
 var escenario;
@@ -32,6 +32,26 @@ function pedirProductos(){
             ordenarProductos(data);
         }
     });
+};
+function obtenerDesayunosPersonalizados(){
+	$.ajax({
+		url:"/personalizados/all",
+		context: document.body,
+		success:function(data){
+			pedido = data;
+			ordenarPersonalizados(data);
+		}
+	});
+};
+function obtenerProductosDesayunosPersonalizados(){
+	$.ajax({
+		url:"/perteneces/all",
+		context: document.body,
+		success:function(data){
+			pedido = data;
+			ordenarDesayunosPersonalizados(data);
+		}
+	});
 };
 
 $(function(){
@@ -71,17 +91,50 @@ function ordenarProductos(data){
 			categoriaOBJ = new Array();
 			productos[catID]=categoriaOBJ;
 		}
-		data[i].id=categoriaOBJ.length;
+		//data[i].id=categoriaOBJ.length;
 		categoriaOBJ[categoriaOBJ.length]=data[i];
+
 
 	}
 	crearTablaProductoContenido();
+	obtenerDesayunosPersonalizados();
 	cargar();
 	//console.log("termine");
 }
 
 
+function ordenarPersonalizados(data){
+	for (i = 0; i < data.length; ++i) {
+		var desayunoPersonalizado=data[i];
+		var modelos = document.getElementById("modelos");
+		var but = document.createElement("button");
+		but.innerHTML=desayunoPersonalizado.nombre;
+		but.setAttribute("type","button");
+		but.setAttribute("id","b"+desayunoPersonalizado.id);
+		but.setAttribute("class","btn btn-default active DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra");
+		modelos.appendChild(but);
 
+	}
+	obtenerProductosDesayunosPersonalizados();
+
+}
+function ordenarDesayunosPersonalizados(data){
+	for (i = 0; i < data.length; ++i) {
+		//cada data va a tener id e id
+		var idDesayuno = data[i].idDesayuno;
+		var arregloProductosIds;
+		if (predefinidos.hasOwnProperty(idDesayuno))
+			arregloProductosIds=predefinidos[idDesayuno];
+		else{
+			arregloProductosIds = new Array();
+			predefinidos[idDesayuno]=arregloProductosIds;
+		}
+		arregloProductosIds[arregloProductosIds.length]=data[i].idProductos;
+
+	}
+	crearPredefinidos();
+
+}
 
 
 function iniciar(){
@@ -141,25 +194,40 @@ function cargar(){
 }
 
 
-function crearPredefinidos(){
-	predefinidos[0]=clasico;
-	predefinidos[1]=especial;
-	predefinidos[2]=matero;
-	for (var k = 0; k <predefinidos.length; k++) {
-	 	var desayun=crearDesayunoVacio();
-	 	var d=predefinidos[k];
-	 	for(var j=0; j<d.length; j++){
-	 		var categoria=d[j]; 
-	 		var catdes=desayun[j];
-	 		for (var i = 0; i <categoria.length ; i++) {
-	 			catdes[categoria[i].id]=true;
-	 		}
-	 	}
-	 	opcionesDesayunos["b"+(k+1)]=desayun;
-	 }
+
+// function crearPredefinidos(){
+// 	for (var i in predefinidos){
+// 	 	var desayun=crearDesayunoVacio();
+// 	 	var desayunoPredefinido = predefinidos[i];
+// 	 	for (var j in productos ){
+// 	 		for(var k=0; k< productos[j].length; k++){
+// 	 			var idP=productos[j][k].id;
+// 	 		}
+// 	 		var idP = desayunoPredefinido[j];
+// 	 		var idC = productos
+// 	 	}
+
+
+// 	 	}
+// 	 	opcionesDesayunos["b"+(k+1)]=desayun;
+// 	}
+
+
+// 	for (var k = 0; k <predefinidos.length; k++) {
+// 	 	var desayun=crearDesayunoVacio();
+// 	 	var d=predefinidos[k];
+// 	 	for(var j=0; j<d.length; j++){
+// 	 		var categoria=d[j]; 
+// 	 		var catdes=desayun[j];
+// 	 		for (var i = 0; i <categoria.length ; i++) {
+// 	 			catdes[categoria[i].id]=true;
+// 	 		}
+// 	 	}
+// 	 	opcionesDesayunos["b"+(k+1)]=desayun;
+// 	 }
 		
 
-}
+// }
 function prepararCanvas(N){
 	eliminarDibujos();
 	limpiarInputs();
@@ -316,6 +384,8 @@ function crearTablaProductoContenido(){
 	}
 	div.setAttribute("class","tab-pane fade active in");
 
+
+
 }
  
 function pintarCanvas(event){
@@ -458,7 +528,7 @@ function calcularPrecio(){
 
 function crearDesayunoVacio() {
     var Des = [];
-    for (var i in productos) { volver
+    for (var i in productos) { 
 		var opcion = productos[i];	
 		var arreglo=new Array();
 		for (var j=0;j<opcion.length;j++){

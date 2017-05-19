@@ -25,7 +25,9 @@ Route::get('/productos/all', 'ProductosController@index');
 Route::get('/productos/{id}','ProductosController@get');
 Route::post('/productos/crear','ProductosController@create');
 Route::post('/productos/edit','ProductosController@edit');
-	
+
+route::get('/personalizados/all','PersonalizadosController@index');
+route::get('/perteneces/all','PerteneceController@index');
 
 	Auth::routes();
 

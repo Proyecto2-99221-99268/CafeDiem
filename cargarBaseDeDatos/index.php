@@ -1,4 +1,56 @@
 <?php
+$json4='[
+{"idDesayuno":1, "idProductos":29},
+{"idDesayuno":1, "idProductos":30},
+{"idDesayuno":1, "idProductos":31},
+{"idDesayuno":1, "idProductos":35},
+{"idDesayuno":1, "idProductos":36},
+{"idDesayuno":1, "idProductos":39},
+{"idDesayuno":1, "idProductos":40},
+{"idDesayuno":1, "idProductos":43},
+{"idDesayuno":1, "idProductos":44},
+{"idDesayuno":1, "idProductos":49},
+{"idDesayuno":1, "idProductos":55},
+
+{"idDesayuno":2, "idProductos":29},
+{"idDesayuno":2, "idProductos":30},
+{"idDesayuno":2, "idProductos":31},
+{"idDesayuno":2, "idProductos":35},
+{"idDesayuno":2, "idProductos":36},
+{"idDesayuno":2, "idProductos":39},
+{"idDesayuno":2, "idProductos":40},
+{"idDesayuno":2, "idProductos":43},
+{"idDesayuno":2, "idProductos":44},
+{"idDesayuno":2, "idProductos":49},
+{"idDesayuno":2, "idProductos":55},
+
+{"idDesayuno":3, "idProductos":29},
+{"idDesayuno":3, "idProductos":30},
+{"idDesayuno":3, "idProductos":31},
+{"idDesayuno":3, "idProductos":32},
+{"idDesayuno":3, "idProductos":33},
+{"idDesayuno":3, "idProductos":35},
+{"idDesayuno":3, "idProductos":37},
+{"idDesayuno":3, "idProductos":38},
+{"idDesayuno":3, "idProductos":39},
+{"idDesayuno":3, "idProductos":40},
+{"idDesayuno":3, "idProductos":41},
+{"idDesayuno":3, "idProductos":42},
+{"idDesayuno":3, "idProductos":43},
+{"idDesayuno":3, "idProductos":44},
+{"idDesayuno":3, "idProductos":45},
+{"idDesayuno":3, "idProductos":46},
+{"idDesayuno":3, "idProductos":53},
+{"idDesayuno":3, "idProductos":54}
+
+]';
+
+
+$json3='[
+{"id":1,"nombre":"matero"},
+{"id":2,"nombre":"clasico"},
+{"id":3,"nombre":"especial"}
+]';
 
 $json2='[
 {"id":1,"nombre":"bebidas","permitirMasDeUnElemento":1,"pintarAlFondo":0},
@@ -39,6 +91,10 @@ $json='[
 echo "hola mundo";
 $productos = json_decode($json, true);
 $categorias=json_decode($json2,true);
+$personalizados=json_decode($json3,true);
+$perteneces=json_decode($json4,true);
+
+
 
 $server = "localhost";
 $user = "root";
@@ -51,20 +107,38 @@ or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
 $i=0;
 echo "cargue la categoria"+ $i;
-foreach ($categorias as $categoria) {
-   //echo "hola"; 
-    mysqli_query($conexion,"INSERT INTO categorias (id,nombre,permitirMasDeUnElemento,pintarAlFondo) 
-    VALUES ('".$categoria['id']."','".$categoria['nombre']."',".$categoria['permitirMasDeUnElemento'].",'".$categoria['pintarAlFondo']."')");	
-    echo "cargue la categoria"+ $i;
-    $i++;
+// foreach ($categorias as $categoria) {
+//    //echo "hola"; 
+//     mysqli_query($conexion,"INSERT INTO categorias (id,nombre,permitirMasDeUnElemento,pintarAlFondo) 
+//     VALUES ('".$categoria['id']."','".$categoria['nombre']."',".$categoria['permitirMasDeUnElemento'].",'".$categoria['pintarAlFondo']."')");	
+//     echo "cargue la categoria"+ $i;
+//     $i++;
         
-}	
+// }	
 
-foreach ($productos as $producto) {
-   //echo "hola"; 
-    mysqli_query($conexion,"INSERT INTO productos (idCategoria,nombre,precio,imagen,x,y,w,h) 
-    VALUES ('".$producto['idCategoria']."','".$producto['nombre']."',".$producto['precioPorUnidad'].",'".$producto['imagen']."','".$producto['x']."','".$producto['y']."','".$producto['w']."',".$producto['h'].")");	
+// foreach ($productos as $producto) {
+//    //echo "hola"; 
+//     mysqli_query($conexion,"INSERT INTO productos (idCategoria,nombre,precio,imagen,x,y,w,h) 
+//     VALUES ('".$producto['idCategoria']."','".$producto['nombre']."',".$producto['precioPorUnidad'].",'".$producto['imagen']."','".$producto['x']."','".$producto['y']."','".$producto['w']."',".$producto['h'].")");	
         
+// }	
+
+// foreach ($personalizados as $personalizado) {
+//    //echo "hola"; 
+//     mysqli_query($conexion,"INSERT INTO personalizados (nombre) 
+//     VALUES ('".$personalizado['nombre']."')");	
+    
+        
+// }
+
+foreach ($perteneces as $pertenece) {
+   //echo "hola"; 
+    mysqli_query($conexion,"INSERT INTO perteneces (idDesayuno, idProductos) 
+    VALUES ('".$pertenece["idDesayuno"]."','".$pertenece["idProductos"] ."')"
+
+    );	
+    
+    echo "mi novia es hermosa";    
 }	
 
 
