@@ -10,6 +10,7 @@
 @section('container')
   
   <div class="main row">
+		
 		<aside class=" col-xs-12 col-sm-12 col-md-12">
 			<ul id="categorias_barra" class="nav nav-pills">
 			  
@@ -18,6 +19,9 @@
 			<div class="tab-content" id="categoria_contenedora">
 
 		</aside>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+		<a class="btn btn-default" href="/" role="button">Ir a modelos</a>
+		</div>
 	</div>
 
 @stop

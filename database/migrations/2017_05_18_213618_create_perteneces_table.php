@@ -20,7 +20,7 @@ class CreatePertenecesTable extends Migration
            
             $table->foreign('idDesayuno')->references('id')->on('personalizados');
             $table->foreign('idCategoria')->references('id')->on('productos');
-            $table->foreign('idProductos')->references('id')->on('productos');
+            $table->foreign('idProductos')->references('idLocal')->on('productos');
 
             $table->timestamps();
         });
@@ -28,7 +28,7 @@ class CreatePertenecesTable extends Migration
        Schema::table('perteneces', function(Blueprint $table) {
             $table->foreign('idDesayuno')->references('id')->on('personalizados');
             $table->foreign('idCategoria')->references('id')->on('productos');
-            $table->foreign('idProductos')->references('id')->on('productos');     
+            $table->foreign('idProductos')->references('idLocal')->on('productos');     
         });
     }
 

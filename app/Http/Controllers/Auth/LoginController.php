@@ -28,8 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-  //  protected $redirectTo = 'index';
-
+  
     /**
      * Create a new controller instance.
      *
@@ -87,7 +86,7 @@ class LoginController extends Controller
 
         auth()->login($user);
 
-        return redirect()->to('/home');
+        return redirect()->to('/');
     }
     public function redirectToProviderFacebook(){
             return Socialite::driver('facebook')->redirect(); 
@@ -97,7 +96,7 @@ class LoginController extends Controller
 
         auth()->login($user);
 
-        return redirect()->to('/home');
+        return redirect()->to('/');
         }
     
 

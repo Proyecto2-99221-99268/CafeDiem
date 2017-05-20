@@ -9,7 +9,16 @@
 	<script src="{{ asset('/js/facebox-bootstrap.js')}}"></script>
 	
 	<script type="text/javascript"  src="{{ asset('/js/configuracionPanel.js')}}"></script>
-
+	
+	@if(Auth::guest())
+      	<script type="text/javascript"  src="{{ asset('/js/guardarLocalhost.js')}}"></script>
+	@elseif (Auth::check())
+      	@if(Auth::user()->esAdmin)
+			<script type="text/javascript"  src="{{ asset('/js/guardarPredefinidosAdmin.js')}}"></script>
+      	@else
+          	<script type="text/javascript"  src="{{ asset('/js/guardarUsr.js')}}"></script>
+ 	    @endif
+ 	@endif
 @stop
 @section ('container')	 
 		<div  class="noPadding col-xs-12 col-sm-12 col-md-12">
@@ -18,7 +27,15 @@
 		</div>
 		<nav id="navegacion" class="navbar navbar-default barraContenedora radioChico" role="navigation">
 			<div id="modelos" class="navbar-header col-xs-12 col-sm-12 col-md-12 barra radioChico">
-              <button type="button" id="b0" class="btn btn-default active DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Personalizado</button>
+              @if(Auth::guest())
+               <button type="button" id="b0" class="btn btn-default DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Personalizado</button>
+              @elseif (Auth::check())
+              	@if(Auth::user()->esAdmin)
+				<button type="button" id="b0" class="btn btn-default DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Nuevo</button>
+      		  	@else
+          		<button type="button" id="b0" class="btn btn-default DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra">Personalizado</button>
+ 	   		 	@endif
+ 		     @endif
 			</div>
 		</nav>
 

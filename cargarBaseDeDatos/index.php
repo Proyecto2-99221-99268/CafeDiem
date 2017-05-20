@@ -1,47 +1,20 @@
 <?php
 $json4='[
-{"idDesayuno":1,  "idCategoria":1, "idProductos":29},
-{"idDesayuno":1, "idCategoria":1,  "idProductos":30},
-{"idDesayuno":1, "idCategoria":1,  "idProductos":31},
-{"idDesayuno":1,  "idCategoria":2, "idProductos":35},
-{"idDesayuno":1,  "idCategoria":2, "idProductos":36},
-{"idDesayuno":1,  "idCategoria":2, "idProductos":39},
-{"idDesayuno":1, "idCategoria":3,  "idProductos":40},
-{"idDesayuno":1, "idCategoria":4,  "idProductos":43},
-{"idDesayuno":1,  "idCategoria":4, "idProductos":44},
-{"idDesayuno":1,  "idCategoria":5, "idProductos":50},
-{"idDesayuno":1,  "idCategoria":6, "idProductos":55},
+{"idDesayuno":1,  "idCategoria":1, "idProductos":0},
+{"idDesayuno":1, "idCategoria":1,  "idProductos":1},
+{"idDesayuno":1, "idCategoria":1,  "idProductos":5},
+{"idDesayuno":1,  "idCategoria":2, "idProductos":0},
+{"idDesayuno":1,  "idCategoria":2, "idProductos":1},
+{"idDesayuno":1,  "idCategoria":2, "idProductos":3},
+{"idDesayuno":1, "idCategoria":3,  "idProductos":2},
+{"idDesayuno":1, "idCategoria":4,  "idProductos":0},
+{"idDesayuno":1,  "idCategoria":4, "idProductos":1},
+{"idDesayuno":1,  "idCategoria":4, "idProductos":2},
+{"idDesayuno":1,  "idCategoria":4, "idProductos":3},
+{"idDesayuno":1,  "idCategoria":5, "idProductos":3},
+{"idDesayuno":1,  "idCategoria":6, "idProductos":2}
 
-{"idDesayuno":2,  "idCategoria":1, "idProductos":29},
-{"idDesayuno":2, "idCategoria":1,  "idProductos":30},
-{"idDesayuno":2, "idCategoria":1,  "idProductos":31},
-{"idDesayuno":2,  "idCategoria":2, "idProductos":35},
-{"idDesayuno":2,  "idCategoria":2, "idProductos":36},
-{"idDesayuno":2, "idCategoria":2,  "idProductos":39},
-{"idDesayuno":2, "idCategoria":3,  "idProductos":40},
-{"idDesayuno":2, "idCategoria":4,  "idProductos":43},
-{"idDesayuno":2, "idCategoria":4,  "idProductos":44},
-{"idDesayuno":2, "idCategoria":5,  "idProductos":49},
-{"idDesayuno":2,  "idCategoria":6, "idProductos":55},
 
-{"idDesayuno":3, "idCategoria":1,  "idProductos":29},
-{"idDesayuno":3, "idCategoria":1,  "idProductos":30},
-{"idDesayuno":3, "idCategoria":1,  "idProductos":31},
-{"idDesayuno":3, "idCategoria":1,  "idProductos":32},
-{"idDesayuno":3, "idCategoria":1,  "idProductos":33},
-{"idDesayuno":3, "idCategoria":2,  "idProductos":35},
-{"idDesayuno":3, "idCategoria":2,  "idProductos":37},
-{"idDesayuno":3, "idCategoria":2,  "idProductos":38},
-{"idDesayuno":3, "idCategoria":2,  "idProductos":39},
-{"idDesayuno":3, "idCategoria":3,  "idProductos":40},
-{"idDesayuno":3, "idCategoria":3,  "idProductos":41},
-{"idDesayuno":3, "idCategoria":3,  "idProductos":42},
-{"idDesayuno":3, "idCategoria":4,  "idProductos":43},
-{"idDesayuno":3, "idCategoria":4,  "idProductos":44},
-{"idDesayuno":3, "idCategoria":4,  "idProductos":45},
-{"idDesayuno":3, "idCategoria":4,  "idProductos":46},
-{"idDesayuno":3, "idCategoria":5,  "idProductos":53},
-{"idDesayuno":3, "idCategoria":6,  "idProductos":54}
 
 ]';
 
@@ -107,29 +80,29 @@ or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
 $i=0;
 echo "cargue la categoria"+ $i;
-// foreach ($categorias as $categoria) {
-//    //echo "hola"; 
-//     mysqli_query($conexion,"INSERT INTO categorias (id,nombre,permitirMasDeUnElemento,pintarAlFondo) 
-//     VALUES ('".$categoria['id']."','".$categoria['nombre']."',".$categoria['permitirMasDeUnElemento'].",'".$categoria['pintarAlFondo']."')");	
-//     echo "cargue la categoria"+ $i;
-//     $i++;
+foreach ($categorias as $categoria) {
+   //echo "hola"; 
+    mysqli_query($conexion,"INSERT INTO categorias (id,nombre,permitirMasDeUnElemento,pintarAlFondo) 
+    VALUES ('".$categoria['id']."','".$categoria['nombre']."',".$categoria['permitirMasDeUnElemento'].",'".$categoria['pintarAlFondo']."')");	
+    echo "cargue la categoria"+ $i;
+    $i++;
         
-// }	
+}	
 
-// foreach ($productos as $producto) {
-//    //echo "hola"; 
-//     mysqli_query($conexion,"INSERT INTO productos (idCategoria,nombre,precio,imagen,x,y,w,h) 
-//     VALUES ('".$producto['idCategoria']."','".$producto['nombre']."',".$producto['precioPorUnidad'].",'".$producto['imagen']."','".$producto['x']."','".$producto['y']."','".$producto['w']."',".$producto['h'].")");	
+foreach ($productos as $producto) {
+   //echo "hola"; 
+    mysqli_query($conexion,"INSERT INTO productos (idCategoria,idLocal,nombre,precio,imagen,x,y,w,h) 
+    VALUES ('".$producto['idCategoria']."','".$producto['id']."','".$producto['nombre']."',".$producto['precioPorUnidad'].",'".$producto['imagen']."','".$producto['x']."','".$producto['y']."','".$producto['w']."',".$producto['h'].")");	
         
-// }	
+}	
 
-// foreach ($personalizados as $personalizado) {
-//    //echo "hola"; 
-//     mysqli_query($conexion,"INSERT INTO personalizados (nombre) 
-//     VALUES ('".$personalizado['nombre']."')");	
+foreach ($personalizados as $personalizado) {
+   //echo "hola"; 
+    mysqli_query($conexion,"INSERT INTO personalizados (nombre) 
+    VALUES ('".$personalizado['nombre']."')");	
     
         
-// }
+}
 
 foreach ($perteneces as $pertenece) {
    //echo "hola"; 

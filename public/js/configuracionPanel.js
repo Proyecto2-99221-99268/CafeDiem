@@ -56,6 +56,7 @@ function obtenerProductosDesayunosPersonalizados(){
 
 $(function(){
 	mostrar();
+	
 });
 
 function mostrarcategoria(data){
@@ -74,7 +75,6 @@ function mostrarcategoria(data){
 		// ul.setAttribute("id",cat.id);
 		// ul.innerHTML=cat.nombre;
 		// tabla.append(ul);
-  		
 	}
 	crearTablaProductoHeader();
 	pedirProductos();
@@ -91,7 +91,7 @@ function ordenarProductos(data){
 			categoriaOBJ = new Array();
 			productos[catID]=categoriaOBJ;
 		}
-		//data[i].id=categoriaOBJ.length;
+		data[i].id=categoriaOBJ.length;
 		categoriaOBJ[categoriaOBJ.length]=data[i];
 
 
@@ -111,7 +111,8 @@ function ordenarPersonalizados(data){
 		but.innerHTML=desayunoPersonalizado.nombre;
 		but.setAttribute("type","button");
 		but.setAttribute("id","b"+desayunoPersonalizado.id);
-		but.setAttribute("class","btn btn-default active DP col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra");
+		but.className="DP btn btn-default col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra";
+		but.setAttribute("onclick", "configurarTipoDesayuno(event)");
 		modelos.appendChild(but);
 
 	}
@@ -120,15 +121,31 @@ function ordenarPersonalizados(data){
 }
 function ordenarDesayunosPersonalizados(data){
 	for (i = 0; i < data.length; ++i) {
-		//cada data va a tener id e id
+		//cada data va a tener idDes, idCat e idProd
 		var idDesayuno = data[i].idDesayuno;
+		var idCategoria=data[i].idCategoria;
 		var arregloProductosIds;
-		if (predefinidos.hasOwnProperty(idDesayuno))
-			arregloProductosIds=predefinidos[idDesayuno];
-		else{
-			arregloProductosIds = new Array();
-			predefinidos[idDesayuno]=arregloProductosIds;
+		var arregloCategorias;
+
+		
+
+		if (predefinidos.hasOwnProperty(idDesayuno)){
+			arregloCategorias=predefinidos[idDesayuno];
 		}
+		else{
+			arregloCategorias = new Array();
+			predefinidos[idDesayuno]=arregloCategorias;
+		}
+
+		if(arregloCategorias.hasOwnProperty(idCategoria)){/// ver si no se cae
+			arregloProductosIds=arregloCategorias[idCategoria];
+		}else{
+			arregloProductosIds=new Array();
+			arregloCategorias[idCategoria]=arregloProductosIds;
+		}
+
+
+
 		arregloProductosIds[arregloProductosIds.length]=data[i].idProductos;
 
 	}
@@ -195,41 +212,28 @@ function cargar(){
 
 
 
-function crearPredefinidos(){
-	for (var i in predefinidos){
+function crearPredefinidos(){ //para tener los desayunos por separado, 
+							// y saber que producto contiene y cual no (arreglo de booleanos)
+	for (var i in predefinidos){ // 1
 	 	var desayun=crearDesayunoVacio();
 	 	var desayunoPredefinido = predefinidos[i];
-	 	for (var j in productos ){
-	 		for(var k=0; k< productos[j].length; k++){
-	 			var idP=productos[j][k].id;
-	 			
 
+	 	for(var j in desayunoPredefinido){ // 1
+	 		var categ=desayunoPredefinido[j];
+	 		var catdes=desayun[j]; 
+	 		for( var k=0 ; k<categ.length;k++){
+	 			catdes[categ[k]]=true;
 	 		}
-	 		var idP = desayunoPredefinido[j];
-	 		var idC = productos
 	 	}
 
-
-	 	}
-	 	opcionesDesayunos["b"+(k+1)]=desayun;
+	 	opcionesDesayunos["b"+( parseInt(i))]=desayun;
 	}
 
-
-	for (var k = 0; k <predefinidos.length; k++) {
-	 	var desayun=crearDesayunoVacio();
-	 	var d=predefinidos[k];
-	 	for(var j=0; j<d.length; j++){
-	 		var categoria=d[j]; 
-	 		var catdes=desayun[j];
-	 		for (var i = 0; i <categoria.length ; i++) {
-	 			catdes[categoria[i].id]=true;
-	 		}
-	 	}
-	 	opcionesDesayunos["b"+(k+1)]=desayun;
-	 }
-		
-
 }
+
+
+
+
 function prepararCanvas(N){
 	eliminarDibujos();
 	limpiarInputs();
@@ -240,15 +244,16 @@ function prepararCanvas(N){
 function mostrarPredefinido(N,setearceldas){
 	//N es la posicion en opcionesDesayunos del desayuno que quiero mostrar
 	var amostrar=opcionesDesayunos[N];
- 	for(var j=0; j<amostrar.length; j++){
+ 	for(var j in amostrar){
  		var categoria=amostrar[j]; 
-		var cat = opcionesTotales[j];
+		var cat = productos[j];  ///QUE TENEMOS EN VEZ DE OPCIONES TOTALESSSSSSSSSSSSS??????????????????????????????????????????????????????????????????????????
+ 										//tenemos productos--> arreglo de categorias, c/u con un arreglo de prods
  		for (var i = 0; i <categoria.length ; i++) {
- 			if (categoria[i]==true){
+ 			if (categoria[i]){
  				var elemento = cat[i];
-				setearDibujo(elemento.imagen,elemento.nombre,elemento.x,elemento.y, elemento.w, elemento.h,j==5);
+				setearDibujo(elemento.imagen,elemento.nombre,elemento.x,elemento.y, elemento.w, elemento.h, categorias[elemento.idCategoria].pintarAlFondo);
 				if (setearceldas) 
-					setearCeldas(j,elemento.id);
+					setearCeldas(j-1,elemento.id);
  			}
  		}
  	}
@@ -258,8 +263,8 @@ function mostrarPredefinido(N,setearceldas){
 }
 function configurarTipoDesayuno(event){
 	var target=event.target;
-	//console.log(target.id);
-	$(".DP").removeClass("active");
+	console.log(target.id);
+	$('.DP').removeClass("active");
 	seleccionado = target.id;
 	prepararCanvas(target.id);
 	$("#"+target.id).addClass("active");
@@ -286,7 +291,8 @@ function mostrar(){
 	$("#guardar").click(guardar);
 	$("#cargar").click(recuperar);
 	$("#borrar").click(borrarCanvas);
-	$(".DP").click(configurarTipoDesayuno);
+	$("#b0").click(configurarTipoDesayuno);
+	//console.log("lasdads");
 	
 	var n = document.getElementById("miCanvas").offsetWidth;
   	KineticCanvas(n);
@@ -392,7 +398,7 @@ function crearTablaProductoContenido(){
  
 function pintarCanvas(event){
 	
-	//opcionesDesayunos["b0"]=crearDesayuno(seleccionado);
+	opcionesDesayunos["b0"]=crearDesayuno(seleccionado);
 	
 	// localStorage.removeItem("personalizado");
 	// var myJSON = JSON.stringify(desayunoPersonalizado);
@@ -504,6 +510,9 @@ function borrarCanvas(){
 	$("#precio").text("$0.00");
 	limpiarInputs();
 	$(".DP").removeClass("active");
+	// var DP = document.getElementsByClassName("DP");
+	// DP.removeAttribute("class");
+
 	$("#"+seleccionado).addClass("active");
 
 }
@@ -531,7 +540,7 @@ function calcularPrecio(){
 function crearDesayunoVacio() {
     var Des = [];
     for (var i in productos) { 
-		var opcion = productos[i];	
+		var opcion = productos[i];	 //categoria
 		var arreglo=new Array();
 		for (var j=0;j<opcion.length;j++){
 			arreglo[j]=false;
@@ -544,7 +553,7 @@ function crearDesayunoVacio() {
 function crearDesayuno(bn) {
     var Des = [];
     var opDesa=opcionesDesayunos[bn];
-    for (var i = 0; i < opDesa.length; i++) {
+    for (var i in opDesa ) {
 		var opcion = opDesa[i];	
 		var arreglo=new Array();
 		for (var j=0;j<opcion.length;j++){

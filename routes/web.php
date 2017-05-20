@@ -28,8 +28,10 @@ Route::post('/productos/edit','ProductosController@edit');
 
 route::get('/personalizados/all','PersonalizadosController@index');
 route::get('/perteneces/all','PerteneceController@index');
+route::post('/perteneces','PerteneceController@add');
 
 	Auth::routes();
+
 
 // Route::get('/home', function (){
 // 	return view ('MisVistas.index');
@@ -44,7 +46,7 @@ Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 
-Route::get('administrador', 'paginaAdministrador@retornarPagina');
+// Route::get('administrador', 'paginaAdministrador@retornarPagina');
 
 Auth::routes();
 
