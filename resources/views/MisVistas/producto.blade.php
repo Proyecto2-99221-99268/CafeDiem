@@ -21,7 +21,7 @@
 	  </div>
 	  <div>
 	    <label for="exampleInputFile">Imagen Cargada</label>
-	  	<img src="/{{$producto->imagen}}">
+	  	<img src="{{$producto->imagen}}">
 	  </div>
 	  <div class="form-group">
 	    <label for="precio">precio</label>

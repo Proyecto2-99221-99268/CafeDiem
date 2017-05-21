@@ -4,6 +4,6 @@
 	<title></title>
 </head>
 <body>
-	<h1>bienvenidouuu, {{$user->name}} </h1>
+	<h1>Bienvenido a Cafe Diem, {{$user->name}} </h1>
 </body>
 </html>

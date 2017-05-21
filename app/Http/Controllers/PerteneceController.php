@@ -16,6 +16,20 @@ class PerteneceController extends Controller
     	return pertenece::all();
     }    //
     public function add (Request $request) {
-    	return pertenece::all();
+    	// $pertenece = new pertenece;
+				
+    	
+    	// $idCategoria=$request->idCategoria;
+    	// $idDesayuno=$request->idDesayuno;
+    	// $idProducto=$request->idProductos;
+
+    	// $pertenece->idCategoria=$idCategoria;
+    	// $pertenece->idDesayuno=$idDesayuno;
+    	// $pertenece->idProductos=$idProducto;
+
+
+    	// $pertenece->save();
+    	return($request->data);
+    	
     }   
 }

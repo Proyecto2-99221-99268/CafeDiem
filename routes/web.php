@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +12,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('MisVistas.index');
@@ -30,14 +33,13 @@ route::get('/personalizados/all','PersonalizadosController@index');
 route::get('/perteneces/all','PerteneceController@index');
 route::post('/perteneces','PerteneceController@add');
 
-	Auth::routes();
 
 
 // Route::get('/home', function (){
 // 	return view ('MisVistas.index');
 // });
 
-Auth::routes();
+// Auth::routes();
 
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider')->name('github');
@@ -48,12 +50,25 @@ Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProv
 
 // Route::get('administrador', 'paginaAdministrador@retornarPagina');
 
-Auth::routes();
+// Auth::routes();
 
 
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::any('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+ Route::post('password/reset/{token}', function($token)
+ {
+ 	
+    return View::make('reset')->with('token', $token);
+
+
+ })->name('password/reset');
+
+// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset');
+
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+// Route::any('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('reset', 'Auth\ResetPasswordController@reset');
+
 
 Route::get('generarURL', 'URL@generar');

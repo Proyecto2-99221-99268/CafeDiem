@@ -175,6 +175,6 @@ function modificar (event){
 		index++;
 	}
 	var elemento=tablaElegida[index];
-    window.location='productos/'+elemento.idBD;
+    window.location='/productos/'+elemento.idBD;
     
 }

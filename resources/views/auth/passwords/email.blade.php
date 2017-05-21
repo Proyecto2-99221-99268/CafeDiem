@@ -1,6 +1,6 @@
 @extends('MisVistas.layout2')
 @section('container')
- <h1>Resetear el password</h1>
+ <h1>Resetear contraseña</h1>
  @if (Session::has('status'))
   <div class="alert alert-success">
    {{ Session::get('status') }}

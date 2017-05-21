@@ -7,7 +7,8 @@
 
   	<script src="{{ asset('/js/kinetic-v5.1.0.min.js')}}"></script>
 	<script src="{{ asset('/js/facebox-bootstrap.js')}}"></script>
-	
+	<meta name="_token" content="{{ csrf_token() }}">
+
 	<script type="text/javascript"  src="{{ asset('/js/configuracionPanel.js')}}"></script>
 	
 	@if(Auth::guest())
@@ -15,6 +16,8 @@
 	@elseif (Auth::check())
       	@if(Auth::user()->esAdmin)
 			<script type="text/javascript"  src="{{ asset('/js/guardarPredefinidosAdmin.js')}}"></script>
+		
+
       	@else
           	<script type="text/javascript"  src="{{ asset('/js/guardarUsr.js')}}"></script>
  	    @endif
@@ -67,6 +70,7 @@
 					</div>
 					<div  class="col-xs-3  col-sm-3 col-md-3 noPaddingCostado">
 						<button id="guardar"  alt="guardar" title="Guardar desayuno" class="botones radioGrande"></button>
+						
 					</div>
 					<div  class="col-xs-3  col-sm-3 col-md-3 noPaddingCostado">
 						<button id="cargar" alt="cargar" title="Cargar desayuno guardado" class="botones radioGrande"></button>
@@ -74,7 +78,7 @@
 					<div  class="col-xs-3  col-sm-3 col-md-3 noPaddingCostado">
 						<button id="borrar" alt="borrar" title="Borrar" class="botones radioGrande"></button>
 					</div>
-
+					
 				</div>
 			</div>
 			<div id="cambiarCSSDIV" class="col-xs-12 col-sm-6 col-md-6">
