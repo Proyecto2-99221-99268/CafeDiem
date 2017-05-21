@@ -41,15 +41,11 @@ class ResetPasswordController extends Controller
     }
 
 
-    // public function reestablecer(){
-    //         return view('reset');
+
+    // protected function guard(){
+
+    //     return Auth::guard('name');
     // }
-
-
-    protected function guard(){
-
-        return Auth::guard('guard-name');
-    }
 
     /**
      * Get the broker to be used during password reset.
@@ -60,4 +56,8 @@ class ResetPasswordController extends Controller
     {
         return Password::broker('name');
     }
+
+
+
+    
 }

@@ -17,6 +17,11 @@ Auth::routes();
 Route::get('/', function () {
     return view('MisVistas.index');
 });
+
+Route::get('/home', function () {
+     return redirect()->to('/');
+});
+
 Route::get('/agregarProducto', function () {
     return view('MisVistas.agregarProducto');
 });

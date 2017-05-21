@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\Bienvenido;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -71,10 +72,13 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-         \Mail::to($user)->send(new Bienvenido($user));
+        // \Mail::to($user)->send(new Bienvenido($user));
 
          return $user;
     }
+
+
+   
 
     // public function store(){
     //     $this->validate(request(), [

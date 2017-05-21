@@ -47,6 +47,10 @@ return [
         ],
     ],
 
+
+
+   
+
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -91,10 +95,21 @@ return [
     |
     */
 
-    'passwords' => [
+    // 'passwords' => [
+    //     'name' => [
+    //      'email' => 'emails.password',
+    //         'provider' => 'users',
+    //         'table' => 'password_resets',
+    //         'expire' => 60,
+    //     ],
+    // ],
+
+
+
+     'passwords' => [
         'name' => [
-         'email' => 'emails.password',
             'provider' => 'users',
+            'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],

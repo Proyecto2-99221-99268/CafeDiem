@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\SocialAccountService;
 use Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -91,13 +92,16 @@ class LoginController extends Controller
     public function redirectToProviderFacebook(){
             return Socialite::driver('facebook')->redirect(); 
     }
-     public function handleProviderCallbackFacebook(SocialAccountService $service){
+    
+    public function handleProviderCallbackFacebook(SocialAccountService $service){
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
         auth()->login($user);
 
         return redirect()->to('/');
-        }
-    
+    }
+
+
+   
 
 }
