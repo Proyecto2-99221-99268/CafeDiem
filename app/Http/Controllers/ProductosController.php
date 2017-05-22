@@ -20,6 +20,10 @@ class ProductosController extends Controller
     public function listar(){
         return view('MisVistas.listar'); 
     }
+    public function agregar(){
+        return view('MisVistas.agregarProducto'); 
+    }
+
 
     public function get($id){
     	//return Productos::find([$id, 1]);

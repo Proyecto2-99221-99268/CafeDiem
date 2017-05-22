@@ -16,7 +16,7 @@ class CrearTablaProductos extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("idCategoria")->unsigned();
-            $table->integer("idLocal");
+            $table->integer("idLocal")->unsigned();
             $table->string("nombre");
             $table->float("precio");
             $table->string("imagen");
@@ -32,7 +32,7 @@ class CrearTablaProductos extends Migration
 
 
         });
-        DB::unprepared('ALTER TABLE `productos` DROP PRIMARY KEY, ADD PRIMARY KEY (  `id` ,  `idCategoria` )');
+        DB::unprepared('ALTER TABLE `productos` DROP PRIMARY KEY, ADD PRIMARY KEY (  `id` ,  `idCategoria` ,`idLocal`)');
 
     }
 

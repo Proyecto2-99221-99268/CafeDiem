@@ -7,51 +7,53 @@ $(function() {
 });
 
 $(function(){
-	$("#guardar").click(myFuncion);});
-
-function myFuncion(){
-
-	 var person = prompt("Ingrese el nombre del desayuno:", "");
-	 
+	var eliminar = document.createElement("IMG");
+	eliminar.setAttribute("src","/img/eliminar.png");
+	eliminar.set
+	$('.DP').
 }
-// 	var abc =document.getElementById("abc");
-// 	var form = document.createElement("FORM");
-// 	form.setAttribute("action","/personalizados");
-// 	form.setAttribute("id","form");
-// 	form.setAttribute("method","post");
-// 	form.setAttribute("name","form");
-// 	var input = document.createElement("INPUT");
-// 	input.setAttribute("nombre","nombre");
-// 	input.setAttribute("id","nombre");
-// 	form.appendChild(input);
-// 	var a =document.createElement("a");
-// 	a.setAttribute("href","javascript:%20check_empty()");
-// 	a.setAttribute("id","submit");
-// 	a.innerHTML="Confirmar";
-// 	form.appendChild(a);
-
-// 	abc.appendChild(form);
-// 	abc.style.display = 'none';
-// }
-
 function guardar(){
-	//1) pregunto el nombre
+
+	var nombreDesayuno = prompt("Ingrese el nombre del desayuno:", "");
+	var id = personalizados[nombreDesayuno];
+	if (id == undefined)
+		//es un desayuno nuevo tengo que guardar en personalizados
+		guardarEnPersonalizados(nombreDesayuno);
+	else{
+
+		guardarDesayuno(id);
+	}
+		//es una actualizacion
 	
 
+}
+
+function guardarEnPersonalizados(nombreDesayuno){
+	 var r = confirm("¿Confirma la operación?");
+    if (r == true) {
+		var json = JSON.stringify(nombreDesayuno);
+		$.ajax({
+				      type: "post",
+				      url: '/personalizados/crear',
+				      data: {'nombre': nombreDesayuno},
+				      success: function(id){
+			        	guardarDesayuno(id);
+			      }
+				});
+    
+    }
+}
+
+function guardarDesayuno(id){
+	
 	var arregloAMandar = new Array();
 	var desayunoNuevo= opcionesDesayunos[seleccionado];
-	// if (seleccionado == "b0")
-	// 	//nuevo desayuno
-	// else
-	// 	//actualizacion
-	// 	//pregunto por el idDesayuno que me asigno mysql
+	
 	for (var i in desayunoNuevo){
 		var categoria = desayunoNuevo[i];
 		for (var j =0 ; j<categoria.length; j++){
 			if (categoria[j]){
-				//var idDesayuno=opcionesDesayunos.length+1; //?????????????????????
-			    var idDesayuno = 4;//aca pregunto si es una actualizacion o si estoy creando uno nuevo
-			    //lo saco de la barra b1 b2 b3 ... si es b0 es nuevo
+			    var idDesayuno = id;
 			    var idCategoria= i;
 			    var idProductos = j; 
 			    var record = new Object();
@@ -71,6 +73,7 @@ function guardar(){
 			        data: {data :json},
 			      success: function(data){
 			        alert(data);
+			        window.location.href = '/';
 			      }
 			});
 

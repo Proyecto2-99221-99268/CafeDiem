@@ -2,6 +2,7 @@ var pedido;
 var categorias=new Object();
 var productos=new Object();
 var desayunos=new Object();
+var personalizados = new Array();
 
 var seleccionado = "b0";
 var opcionesDesayunos=[];
@@ -108,6 +109,7 @@ function ordenarPersonalizados(data){
 		var desayunoPersonalizado=data[i];
 		var modelos = document.getElementById("modelos");
 		var but = document.createElement("button");
+		personalizados[desayunoPersonalizado.nombre]=desayunoPersonalizado.id;
 		but.innerHTML=desayunoPersonalizado.nombre;
 		but.setAttribute("type","button");
 		but.setAttribute("id","b"+desayunoPersonalizado.id);

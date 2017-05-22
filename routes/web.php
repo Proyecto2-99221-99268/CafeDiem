@@ -28,13 +28,20 @@ Route::get('/agregarProducto', function () {
 
 Route::get('/categorias/all', 'CategoriasController@index');
 
+Route::get('/productos/agregar','ProductosController@agregar');
 Route::get('productos/listar','ProductosController@listar');
 Route::get('/productos/all', 'ProductosController@index');
 Route::get('/productos/{id}','ProductosController@get');
 Route::post('/productos/crear','ProductosController@create');
 Route::post('/productos/edit','ProductosController@edit');
 
+
+
+
 route::get('/personalizados/all','PersonalizadosController@index');
+route::post('/personalizados/crear','PersonalizadosController@add');
+route::delete('/personalizados/{id}','PersonalizadosController@destroy');
+
 route::get('/perteneces/all','PerteneceController@index');
 route::post('/perteneces','PerteneceController@add');
 

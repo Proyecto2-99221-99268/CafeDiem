@@ -7,7 +7,6 @@
 
   	<script src="{{ asset('/js/kinetic-v5.1.0.min.js')}}"></script>
 	<script src="{{ asset('/js/facebox-bootstrap.js')}}"></script>
-	<meta name="_token" content="{{ csrf_token() }}">
 
 	<script type="text/javascript"  src="{{ asset('/js/configuracionPanel.js')}}"></script>
 	
@@ -16,7 +15,8 @@
 	@elseif (Auth::check())
       	@if(Auth::user()->esAdmin)
 			<script type="text/javascript"  src="{{ asset('/js/guardarPredefinidosAdmin.js')}}"></script>
-		
+			<meta name="_token" content="{{ csrf_token() }}">
+
 
       	@else
           	<script type="text/javascript"  src="{{ asset('/js/guardarUsr.js')}}"></script>
@@ -86,5 +86,6 @@
 			</div>
 		</div>
 		<div id="cartel"></div> 	
+
 		
 @stop

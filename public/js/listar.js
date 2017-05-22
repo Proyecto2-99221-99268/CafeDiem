@@ -147,7 +147,14 @@ function crearTablaProductoContenido(){
 			tabla.appendChild(fila);
 
 
+		
 		}
+		celda=document.createElement("TD");
+		a=document.createElement("A");
+		a.innerHTML='agregar producto';
+		a.setAttribute('href','/productos/agregar');
+		celda.appendChild(a);
+		fila.appendChild(celda);
 		div.appendChild(tabla);
 		tabla_contenedora.append(div);
 	}

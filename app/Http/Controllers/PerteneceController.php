@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\pertenece;
-
+use App\personalizados;
 
 class PerteneceController extends Controller
 {
@@ -15,21 +15,29 @@ class PerteneceController extends Controller
  	public function index () {
     	return pertenece::all();
     }    //
+    
+
     public function add (Request $request) {
-    	// $pertenece = new pertenece;
-				
-    	
-    	// $idCategoria=$request->idCategoria;
-    	// $idDesayuno=$request->idDesayuno;
-    	// $idProducto=$request->idProductos;
+    
+    	$arreglo = json_decode($request->data);
+        $idDesayuno=$arreglo[0]->idDesayuno;
+        //actualizacion => elimino todos los viejos registros
+        $deletedRows=pertenece::where('idDesayuno',$idDesayuno)->delete();//elimino todos los registros con id desayuno para luego actualizarlos
 
-    	// $pertenece->idCategoria=$idCategoria;
-    	// $pertenece->idDesayuno=$idDesayuno;
-    	// $pertenece->idProductos=$idProducto;
-
-
-    	// $pertenece->save();
-    	return($request->data);
-    	
-    }   
+        foreach ($arreglo as $valor) {
+                $pertenece = new pertenece;
+                $pertenece->idProductos=$valor->idProductos;
+                $pertenece->idDesayuno=$valor->idDesayuno;
+                $pertenece->idCategoria=$valor->idCategoria;
+                $pertenece->save();
+            }
+    				
+        if ($deletedRows == null){
+            return ("Se creó un nuevo modelo. Presione ok para ver los cambios");
+        }
+        else{
+            return ("Se actualizo el modelo. Presione ok para ver los cambios");
+        }
+        	
+        }
 }
