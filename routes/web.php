@@ -39,6 +39,7 @@ Route::post('/productos/edit','ProductosController@edit');
 
 
 route::get('/personalizados/all','PersonalizadosController@index');
+route::get("/personalizados/eliminar",'PersonalizadosController@eliminar');
 route::post('/personalizados/crear','PersonalizadosController@add');
 route::delete('/personalizados/{id}','PersonalizadosController@destroy');
 

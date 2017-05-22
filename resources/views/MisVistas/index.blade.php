@@ -41,7 +41,13 @@
  		     @endif
 			</div>
 		</nav>
-
+		<div class="col-xs-12 col-sm-12 col-md-12 ">
+		@if (Auth::check())
+              	@if(Auth::user()->esAdmin)
+              	<a class="btn btn-danger" href="/personalizados/eliminar" role="button">ir a Eliminar modelos</a>
+              	@endif
+        @endif
+		</div>
 		<div class="main row">
 			<div  id="miCanvas" class="noPadding col-xs-12 col-sm-6 col-md-6">
 			</div>

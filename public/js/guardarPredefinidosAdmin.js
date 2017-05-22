@@ -9,7 +9,7 @@ $(function() {
 $(function(){
 	var eliminar = document.createElement("IMG");
 	eliminar.setAttribute("src","/img/eliminar.png");
-	eliminar.set
+	eliminar.setAttribute("onClick")
 	$('.DP').
 }
 function guardar(){

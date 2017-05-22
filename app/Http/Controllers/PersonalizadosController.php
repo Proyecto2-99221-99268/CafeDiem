@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\personalizados;
+use App\pertenece;
 
 
 class PersonalizadosController extends Controller
@@ -26,10 +27,19 @@ class PersonalizadosController extends Controller
     }
     public function destroy($id){
 
-        $id=$request->id;
-        $personalizados::find(id);
-        $personalizados->delete();
-        return $personalizados->id;
+        $personalizado=personalizados::find($id);
+        if ($personalizado == null)
+            return redirect()->to('/');
+        else{
+            $perteneceEliminar=pertenece::where('idDesayuno',$id)->delete();
+            $personalizado->delete();
+            return redirect()->to('/');
+            }
+    }
+
+    public function eliminar(){
+        $personalizados = personalizados::all();
+        return view ("misVistas.personalizadosEliminar",compact('personalizados'));    
     }
 
 }
