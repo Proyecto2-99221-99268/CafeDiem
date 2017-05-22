@@ -1,4 +1,4 @@
-@extends('MisVistas.layout')
+@extends('MisVistas.layoutAdmin')
 
 @section('header')
     <title>Listar Productos - Cafe Diem </title>
@@ -20,8 +20,9 @@
 
 		</aside>
 		<div class="col-xs-12 col-sm-12 col-md-12">
-		<a class="btn btn-default" href="/" role="button">Ir a modelos</a>
+		<a class="btn btn-primary" href="/" role="button">Ir a modelos</a>
 		</div>
+		
 	</div>
 
 @stop

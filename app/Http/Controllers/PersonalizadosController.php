@@ -33,7 +33,7 @@ class PersonalizadosController extends Controller
         else{
             $perteneceEliminar=pertenece::where('idDesayuno',$id)->delete();
             $personalizado->delete();
-            return redirect()->to('/');
+            return redirect()->to('/personalizados/eliminar');
             }
     }
 

@@ -45,6 +45,7 @@
 		@if (Auth::check())
               	@if(Auth::user()->esAdmin)
               	<a class="btn btn-danger" href="/personalizados/eliminar" role="button">ir a Eliminar modelos</a>
+              	<a class="btn btn-info" href="/productos/listar" role="button">ir a productos</a>
               	@endif
         @endif
 		</div>

@@ -7,11 +7,11 @@ $(function() {
 });
 
 $(function(){
-	var eliminar = document.createElement("IMG");
-	eliminar.setAttribute("src","/img/eliminar.png");
-	eliminar.setAttribute("onClick")
-	$('.DP').
-}
+	$('#cargar').parent().css("display","none");
+	$('#comprar').parent().css("display","none");
+
+});
+
 function guardar(){
 
 	var nombreDesayuno = prompt("Ingrese el nombre del desayuno:", "");
@@ -100,7 +100,7 @@ function guardarDesayuno(id){
 
 function recuperar(){
 
-	console.log("recupero");
+
 }
 
 

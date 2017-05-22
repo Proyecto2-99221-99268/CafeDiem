@@ -152,6 +152,7 @@ function crearTablaProductoContenido(){
 		celda=document.createElement("TD");
 		a=document.createElement("A");
 		a.innerHTML='agregar producto';
+		a.setAttribute("class","btn btn-warning");
 		a.setAttribute('href','/productos/agregar');
 		celda.appendChild(a);
 		fila.appendChild(celda);

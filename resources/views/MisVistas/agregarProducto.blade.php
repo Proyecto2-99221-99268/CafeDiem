@@ -1,4 +1,4 @@
-@extends('MisVistas.layout')
+@extends('MisVistas.layoutAdmin')
 
 @section('header')
     <title>Crear Producto - Cafe Diem </title>
@@ -54,4 +54,7 @@
 
 	  <button type="submit" class="btn btn-primary">agregar</button>
 </form>
+<hr>
+	<a class="btn btn-primary" href="/" role="button">ir a modelos</a>  
+    <a class="btn btn-info" href="/productos/listar" role="button">ir a productos</a>  
 @stop

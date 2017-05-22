@@ -29,7 +29,7 @@ Route::get('/agregarProducto', function () {
 Route::get('/categorias/all', 'CategoriasController@index');
 
 Route::get('/productos/agregar','ProductosController@agregar');
-Route::get('productos/listar','ProductosController@listar');
+Route::get('/productos/listar','ProductosController@listar');
 Route::get('/productos/all', 'ProductosController@index');
 Route::get('/productos/{id}','ProductosController@get');
 Route::post('/productos/crear','ProductosController@create');
