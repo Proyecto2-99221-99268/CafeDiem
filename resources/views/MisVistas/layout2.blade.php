@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css')}}">
 	<!-- <link rel="stylesheet" type="text/css" href="css/facebox.css"> -->
 	<link rel="stylesheet" type="text/css" id="cssArchivo"> 
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/extras.css')}}">
+
 	<link rel="icon" href="/img/cafe1.png">
   	
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
