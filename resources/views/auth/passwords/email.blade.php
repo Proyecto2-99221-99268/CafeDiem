@@ -1,6 +1,9 @@
 @extends('MisVistas.layout2')
 @section('container')
- <h1>Resetear contraseña</h1>
+
+ <div id="resetear">
+  <h2>Resetear contraseña</h2>
+</div>
  @if (Session::has('status'))
   <div class="alert alert-success">
    {{ Session::get('status') }}
@@ -15,7 +18,7 @@
  <form method="POST" action="email">
   {{csrf_field()}}
   <div class="form-group">
-   <label for="email">Email</label>
+   <label for="email" id="resetear">Email</label>
    <input type="email" class="form-control" name="email" value="{{ old('email') }}" />
    <div class="text-danger">{{$errors->first('email')}}</div>
   </div>
