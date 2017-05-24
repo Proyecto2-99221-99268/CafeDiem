@@ -22,7 +22,7 @@ class CreateModelosUsuariosTable extends Migration
     
 
         Schema::table('modelos_usuarios', function (Blueprint $table) {
-                $table->foreign('idUsuario')->references('id')->on('');
+                $table->foreign('idUsuario')->references('id')->on('users');
 
             });
     }

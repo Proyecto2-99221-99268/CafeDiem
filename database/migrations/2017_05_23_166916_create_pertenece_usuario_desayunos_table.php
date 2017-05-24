@@ -13,17 +13,18 @@ class CreatePerteneceUsuarioDesayunosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pertenece_usuario_desayunos', function (Blueprint $table) {
-            $table->increments('idModelos');
+        Schema::create('modelosUSR', function (Blueprint $table) {
+            $table->integer('idModelos')->unsigned();
             $table->integer('idCategoria')->unsigned();
             $table->integer('idProductos')->unsigned();
-            $table->primary('idModelos');
             $table->timestamps();
+            
+            $table->primary(['idModelos','idCategoria','idProductos']);
         });
 
-    Schema::table('pertenece_usuario_desayunos', function(Blueprint $table) {
+    Schema::table('modelosUSR', function(Blueprint $table) {
         
-        $table->foreign('idModelos')->references('id')->on('users');
+        $table->foreign('idModelos')->references('id')->on('modelos_usuarios');
   
     });
 
@@ -36,6 +37,6 @@ class CreatePerteneceUsuarioDesayunosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pertenece_usuario_desayunos');
+        Schema::dropIfExists('modelosUSR');
     }
 }
