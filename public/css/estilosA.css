@@ -282,3 +282,7 @@ padding: 0px 0px 0px 0px;
 	font-size: 4.3vw;
 	padding: 7px;
 }
+
+#usID{
+	display: none;
+}

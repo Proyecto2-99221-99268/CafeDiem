@@ -9,6 +9,7 @@ $(function() {
 function recuperar () {
 
 	console.log("recuperar usuario");
+
 }
 
 function guardar(){
@@ -27,21 +28,20 @@ function guardar(){
 
 function guardarEnPersonalizados(nombreDesayuno){
 	var r = confirm("¿Confirma la operación?");
-    
+	var usuarioID=$( "#userID" ).val();
     if (r == true) {
 		var json = JSON.stringify(nombreDesayuno);
 		$.ajax({
 				      type: "post",
 				      url: '/modelosUsuario/crear',
-				      data: {'nombre': nombreDesayuno,'id_Usuario':usuario},
+				      data: {'nombre': nombreDesayuno,'idUsuario':usuarioID},
 				      success: function(id){
+			        	//alert(id);
 			        	guardarDesayuno(id);
 			      }
 				});
-    
     }
 }
-
 function guardarDesayuno(id){
 	
 	var arregloAMandar = new Array();
@@ -51,11 +51,10 @@ function guardarDesayuno(id){
 		var categoria = desayunoNuevo[i];
 		for (var j =0 ; j<categoria.length; j++){
 			if (categoria[j]){
-			    var idDesayuno = id;
 			    var idCategoria= i;
 			    var idProductos = j; 
 			    var record = new Object();
-			    record.idDesayuno=idDesayuno;
+			    record.idModelos=id;
 			    record.idCategoria=idCategoria;
 			    record.idProductos=idProductos;
 			    arregloAMandar[arregloAMandar.length]=record;
@@ -66,7 +65,7 @@ function guardarDesayuno(id){
 	var json = JSON.stringify(arregloAMandar);
 	}
 			$.ajax({
-			      url: '/perteneces',
+			      url: '/modelosUSR',
 			      type: "post",
 			        data: {data :json},
 			      success: function(data){

@@ -21,7 +21,7 @@
       	@else
           	<script type="text/javascript"  src="{{ asset('/js/guardarUsr.js')}}"></script>
 			<meta name="_token" content="{{ csrf_token() }}">
-			
+			<input type="hidden" id="userID" value="{{Auth::user()->id }}">
 
  	    @endif
  	@endif

@@ -46,8 +46,9 @@ route::delete('/personalizados/{id}','PersonalizadosController@destroy');
 route::get('/perteneces/all','PerteneceController@index');
 route::post('/perteneces','PerteneceController@add');
 
+route::post('/modelosUsuario/crear','ModelosUsuarioController@crear');
 
-
+route::post('/modelosUSR','PerteneceUsuarioDesayunoController@crear');
 // Route::get('/home', function (){
 // 	return view ('MisVistas.index');
 // });
