@@ -44,6 +44,8 @@
  		     @endif
 			</div>
 		</nav>
+		<nav id="modelosUsuario" class="navbar navbar-default barraContenedora radioChico">
+		</nav>
 		<div class="col-xs-12 col-sm-12 col-md-12 ">
 		@if (Auth::check())
               	@if(Auth::user()->esAdmin)

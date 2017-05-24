@@ -233,9 +233,6 @@ function crearPredefinidos(){ //para tener los desayunos por separado,
 
 }
 
-
-
-
 function prepararCanvas(N){
 	eliminarDibujos();
 	limpiarInputs();
@@ -259,9 +256,6 @@ function mostrarPredefinido(N,setearceldas){
  			}
  		}
  	}
-		
-
-
 }
 function configurarTipoDesayuno(event){
 	var target=event.target;
@@ -270,8 +264,6 @@ function configurarTipoDesayuno(event){
 	seleccionado = target.id;
 	prepararCanvas(target.id);
 	$("#"+target.id).addClass("active");
-
-
 }
 function setearCeldas(idTabla,idElem){
 	var todasLasTablas = $(".table");
@@ -286,8 +278,6 @@ function limpiarInputs(){
 	$("input").prop('checked', false);
 }
 
-
-
 function mostrar(){
 	$("#comprar").click(comprar);
 	$("#guardar").click(guardar);
@@ -299,10 +289,6 @@ function mostrar(){
 	var n = document.getElementById("miCanvas").offsetWidth;
   	KineticCanvas(n);
   	
-	// var text = localStorage.getItem("personalizado");
-	// if (text!=null){
-	// 	prepararCanvas("b0");
-	// }
 }
 
 

@@ -26,7 +26,9 @@
 		<header>
 			<div class="container">
 				<div id="logoDIV" class="col-xs-12 col-sm-6 col-md-6">
+				<a href="/">	
 					<img id="logo" src="/img/logo.png" alt="Logo cafe diem: desayunos a medida" height="160" width="230" >
+				</a>
 				</div>
 				<div class="contenedorH1 col-xs-12 col-sm-6 col-md-6">
 					<h1>Cafe Diem</h1>

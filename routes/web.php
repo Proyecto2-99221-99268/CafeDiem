@@ -46,14 +46,14 @@ route::delete('/personalizados/{id}','PersonalizadosController@destroy');
 route::get('/perteneces/all','PerteneceController@index');
 route::post('/perteneces','PerteneceController@add');
 
+
+route::post('/modelosUsuario/all','ModelosUsuarioController@all');
 route::post('/modelosUsuario/crear','ModelosUsuarioController@crear');
 
-route::post('/modelosUSR','PerteneceUsuarioDesayunoController@crear');
-// Route::get('/home', function (){
-// 	return view ('MisVistas.index');
-// });
 
-// Auth::routes();
+route::post('/modelosUSR','PerteneceUsuarioDesayunoController@crear');
+route::get('/modelosUSR/all/{idUsuario}','PerteneceUsuarioDesayunoController@all');
+
 
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider')->name('github');
