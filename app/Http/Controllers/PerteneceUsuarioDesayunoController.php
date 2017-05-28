@@ -10,6 +10,10 @@ use App\modelosUsuario;
 class PerteneceUsuarioDesayunoController extends Controller
 {
     //
+    public function __construct(){
+        $this->middleware('user');  
+      }
+      
     public function all ($idUsuario){
         // $mu = modelosUsuario::where('idUsuario', $id)->get();
         $ids =modelosUsuario::where('idUsuario',$idUsuario)->pluck('id')->toArray();

@@ -9,6 +9,10 @@ use App\perteneceUsuarioDesayuno;
 class ModelosUsuarioController extends Controller
 {
     //
+    public function __construct(){
+        $this->middleware('user');  
+      }
+      
     public function all(Request $request){
 		$id = $request->idUsuario;
     	// $mu = modelosUsuario::where('idUsuario',$id)->select('nombre')->get();//->select('nombre');
