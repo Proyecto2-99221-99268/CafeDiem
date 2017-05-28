@@ -12,6 +12,15 @@ var predefinidos=new Object();
 var capas = [];
 var escenario;
 
+$(function() {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+    }
+  });
+});
+
+
 //ajax para pedir todos las categorias
 $(function() {
     $.ajax({
@@ -236,6 +245,7 @@ function crearPredefinidos(){ //para tener los desayunos por separado,
 function prepararCanvas(N){
 	eliminarDibujos();
 	limpiarInputs();
+	setearFondo();
 	mostrarPredefinido(N,true);
 	calcularPrecio();
 } 
@@ -284,13 +294,51 @@ function mostrar(){
 	$("#cargar").click(recuperar);
 	$("#borrar").click(borrarCanvas);
 	$("#b0").click(configurarTipoDesayuno);
-	//console.log("lasdads");
-	
+	$('#compartir').click(compartir);
 	var n = document.getElementById("miCanvas").offsetWidth;
   	KineticCanvas(n);
-  	
+  	setearFondo();
 }
 
+function setearFondo()
+{
+   	var nuevaCapa = new Kinetic.Layer({id:"fondo"});
+	capas["fondo"]=nuevaCapa;
+	var wcanvas=document.getElementById("miCanvas").offsetWidth;
+	var hcanvas=document.getElementById("miCanvas").offsetHeight;
+ 	var rect = new Kinetic.Rect({
+            x: 0,
+            y: 0,
+            width: wcanvas-10, //full width
+            height: hcanvas+10, //full height
+            fill: '#ffe4c4', //background color
+    });
+
+	nuevaCapa.add(rect);
+    escenario.add(nuevaCapa);
+    nuevaCapa.moveToBottom() ;
+    escenario.draw();
+}
+function compartir(){
+	//crear imagen
+     escenario.toDataURL({callback:function(dataUrl) {
+    $.ajax({
+				      type: "post",
+				      url: '/compartir',
+				      data: {data: dataUrl},
+				      success: function(data){
+			        	//alert(data);
+		        		$('#enlacePosta').attr("href",data);
+		        		$('#enlaceCompartir').show();
+			      }
+				});
+
+     }}); 
+	//guardar
+	//crear url
+	//mostrar url
+
+}
 
 function crearTablaProductoHeader(){
 	var categorias_barra=$("#categorias_barra");
@@ -469,9 +517,16 @@ function setearDibujo(source,nombre,equis,ygriega, w, h,pintarFondo){
     });
  	nuevaCapa.add(imgFondo);
     escenario.add(nuevaCapa);
-    if (pintarFondo)
-    	nuevaCapa.moveToBottom() ;
-    escenario.draw();
+    if (pintarFondo){
+    	//borro el fondo
+    	escenario.find("#fondo").remove();
+    	nuevaCapa.moveToBottom();
+    	//pinto el fondo de vuelta
+   		escenario.draw();
+    	setearFondo(); 
+    }
+    else
+    	escenario.draw();
 }
 
 function quitarDibujo(nombre){
@@ -493,6 +548,7 @@ function quitarDibujo(nombre){
 }
 function borrarCanvas(){
 	eliminarDibujos();
+	setearFondo();
 	seleccionado="b0";
 	opcionesDesayunos[seleccionado]=crearDesayunoVacio();
 	$("#precio").text("$0.00");

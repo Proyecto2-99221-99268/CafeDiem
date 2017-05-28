@@ -41,14 +41,14 @@ function mostrarcategoria(data){
 
 // }
 function cambioCategoria() {
-	$('#bootstrapSelectForm').find('[name="Categoria"]').selectpicker().change(function(event) {
+	$('#Categoria').change(function(event) {
 		var e = document.getElementById("Categoria");
 		var valor = e.options[e.selectedIndex].value;
-		console.log("valor "+valor);
+		// console.log("valor "+valor);
 		var idCategoria = document.getElementById("idCategoria");
 		var c = opciones[valor];
 		idCategoria.setAttribute('value',c);
-
-	}
-	)
+	}	
+	);
+	
 }

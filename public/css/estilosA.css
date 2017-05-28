@@ -101,9 +101,7 @@ body{
 #miCanvas{
 	border: 5px solid #fff;
 	border-radius: 15px;
-	background-color: silver;
-	background-image: url("../imagenes/corcho.jpg");
-	background-size: cover;
+
 }
 
 
@@ -191,6 +189,9 @@ div{
 }
 #comprar{
 	background-image: url("../imagenes/botones/comprar.png");
+}
+#compartir{
+	background-image: url("../imagenes/botones/compartir.png");
 }
 #cambiarCSS{
 	background-image: url("../imagenes/botones/cambiar.png");
@@ -289,4 +290,7 @@ padding: 0px 0px 0px 0px;
 #modelosUsuario
 {
 	display: none;	
+}
+.botonEliminarModelos{
+	float: right;
 }

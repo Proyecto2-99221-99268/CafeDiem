@@ -49,12 +49,14 @@ route::post('/perteneces','PerteneceController@add');
 
 route::post('/modelosUsuario/all','ModelosUsuarioController@all');
 route::post('/modelosUsuario/crear','ModelosUsuarioController@crear');
+route::get('/modelosUsuario/eliminar/{id}','ModelosUsuarioController@eliminar');
 
 
 route::post('/modelosUSR','PerteneceUsuarioDesayunoController@crear');
 route::get('/modelosUSR/all/{idUsuario}','PerteneceUsuarioDesayunoController@all');
 
-
+Route::post('/compartir', 'ImagenURLController@compartir');
+Route::get('/compartir/{url}', 'ImagenURLController@obtener');
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider')->name('github');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

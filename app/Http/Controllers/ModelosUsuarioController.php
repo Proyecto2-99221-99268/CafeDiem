@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\modelosUsuario;
+use App\perteneceUsuarioDesayuno;
 
 class ModelosUsuarioController extends Controller
 {
@@ -27,5 +28,14 @@ class ModelosUsuarioController extends Controller
 
 
     	return $modelo_usuario->id;
+    }
+
+    public function eliminar ($id){
+        //primero se eliminan todos los productos y luego el modelo
+        //1)
+        $aEliminar=perteneceUsuarioDesayuno::where('idModelos',$id)->delete();
+        //2)
+        modelosUsuario::destroy($id);
+        return redirect()->to('/');    
     }
 }

@@ -1,13 +1,13 @@
 modelosUsuario=new Object();
 modelosUsuarioAsociativo=new Array(); //arreglo asociativo
 
-$(function() {
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-    }
-  });
-});
+// $(function() {
+//   $.ajaxSetup({
+//     headers: {
+//       'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+//     }
+//   });
+// });
 
 function recuperar () {
 	$('#modelosUsuario').show();
@@ -99,16 +99,25 @@ function ordenarModelosUsuario(data){
 		but.setAttribute("id","v"+modeloUsuarios.id);
 		but.className="DP btn btn-default col-xs-6 col-sm-3 col-md-3 botonesBarra sizeLetra";
 		but.setAttribute("onclick", "configurarTipoDesayuno(event)");
+		var a = document.createElement("a");
+		a.innerHTML="X";
+		a.className="btn btn-danger botonEliminarModelos";
+		var modid=modeloUsuarios.id;
+		// a.setAttribute("onclick", "confirmarBorrar(modid)");
+		a.onclick=function() {confirmarBorrar(modid);};
+		but.appendChild(a);
 		modelos.appendChild(but);
 
 	}
-	var but = document.createElement("button");
-	but.innerHTML="Ir a Eliminar modelos";
-	but.className="btn btn-danger";
-	but.setAttribute("href","/eliminar");
-	modelos.appendChild(but);
 
 	obtenerProductosModelosUsuario();
+}
+function confirmarBorrar(id){
+	var r = confirm("¿Está seguro que desea eliminar el modelo?");
+	console.log(id);
+    if (r == true) {
+		window.location.href ="/modelosUsuario/eliminar/"+id;
+    }
 }
 
 function guardar(){

@@ -90,8 +90,7 @@ footer{
 #miCanvas{
 	border: 2px solid #000;
 	border-radius: 5px;
-	background-image: url("../imagenes/fondoCanvas.jpg");
-	background-size: cover;
+	
 
 
 }
@@ -201,6 +200,9 @@ h1{
 #comprar{
 	background-image: url("../imagenes/botones/comprar.png");
 }
+#compartir{
+	background-image: url("../imagenes/botones/compartir.png");
+}
 #cambiarCSS{
 	background-image: url("../imagenes/botones/cambiar.png");
 
@@ -255,4 +257,7 @@ h1{
 #modelosUsuario
 {
 	display: none;	
+}
+.botonEliminarModelos{
+	float: right;
 }

@@ -35,10 +35,10 @@ class PerteneceUsuarioDesayunoController extends Controller
             }
     				
         if ($deletedRows == null){
-            return ("Se creó un nuevo modelo. Presione ok para ver los cambios");
+            return ("Se creó un nuevo modelo");
         }
         else{
-            return ("Se actualizo el modelo. Presione ok para ver los cambios");
+            return ("Se actualizo el modelo");
         }
         	
         

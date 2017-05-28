@@ -43,13 +43,15 @@ class ProductosController extends Controller
     	$Producto->y=$request->y;
     	$Producto->w=$request->w;
     	$Producto->h=$request->h;	
-
+        $maxIdLocal=Productos::where('idCategoria',$Producto->idCategoria)->max('idLocal');
+        $Producto->idLocal=$maxIdLocal+1;
 	   	$imagen= request()->file('imagen');
 	   	$nombreImagen = $Producto->nombre.'.'.$request->imagen->getClientOriginalExtension();
 	   	$destinationPath = public_path('img');
         $imagen->move($destinationPath, $nombreImagen);
     	 $Producto->save();
-    	//dd($request);
+         return redirect()->to('/listar');
+    	// dd($request);
     }
     public function edit (Request $request ){
         //dd($request->file('imagen'));
