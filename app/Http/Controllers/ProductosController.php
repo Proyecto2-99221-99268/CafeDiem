@@ -38,7 +38,7 @@ class ProductosController extends Controller
     	$Producto->idCategoria=$request->idCategoria;
     	$Producto->nombre=$request->nombre;
     	$Producto->precio=$request->precio;
-    	$Producto->imagen='img/'.$Producto->nombre.'.'.$request->imagen->getClientOriginalExtension();
+    	$Producto->imagen='/img/'.$Producto->nombre.'.'.$request->imagen->getClientOriginalExtension();
     	$Producto->x=$request->x;
     	$Producto->y=$request->y;
     	$Producto->w=$request->w;
@@ -50,7 +50,7 @@ class ProductosController extends Controller
 	   	$destinationPath = public_path('img');
         $imagen->move($destinationPath, $nombreImagen);
     	 $Producto->save();
-         return redirect()->to('/listar');
+         return redirect()->to('/productos/listar');
     	// dd($request);
     }
     public function edit (Request $request ){

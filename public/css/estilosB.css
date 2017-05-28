@@ -261,3 +261,21 @@ h1{
 .botonEliminarModelos{
 	float: right;
 }
+#formulario{
+    margin: 5px;
+    padding: 20px;
+    background-color: #111;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    
+}
+.form-group{
+	color: white;
+}
+.tablaEliminar{
+	color: white;
+}
+.tablaEliminar:hover{
+	color: black;
+}

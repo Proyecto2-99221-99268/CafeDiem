@@ -10,8 +10,10 @@
 @section('container')
   
   <h3>  eliminar modelo</h3>
-  <table class="table table-hover">
- 	<tr>
+  
+  <div id="formulario">
+  <table class="table table-hover tablaEliminar">
+  <tr>
     <th>Modelo desayuno</th> 
     <th>Eliminar</th>
   </tr>
@@ -29,6 +31,7 @@
         </tr>
     @endforeach
     </table>
+    </div>
     <hr>
 	<a class="btn btn-primary" href="/" role="button">ir a modelos</a>  
     <a class="btn btn-info" href="/productos/listar" role="button">ir a productos</a>  

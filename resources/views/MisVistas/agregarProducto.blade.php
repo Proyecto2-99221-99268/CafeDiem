@@ -13,6 +13,7 @@
   
   <h3>  ingrese el producto</h3>
   <hr>
+  <div id="formulario">
   <form method="POST" action="/productos/crear" id="bootstrapSelectForm"  enctype="multipart/form-data">
 	  {{csrf_field()}}
 	  <div class="form-group">
@@ -54,6 +55,7 @@
 
 	  <button type="submit" class="btn btn-primary">agregar</button>
 </form>
+</div>
 <hr>
 	<a class="btn btn-primary" href="/" role="button">ir a modelos</a>  
     <a class="btn btn-info" href="/productos/listar" role="button">ir a productos</a>  
