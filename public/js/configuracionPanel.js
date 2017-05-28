@@ -178,7 +178,8 @@ function resizeCanvas(){
 	var n = document.getElementById("miCanvas").offsetWidth;	
 	escenario.setWidth(n); 		
 	escenario.setHeight(n);
-//	mostrarPredefinido(seleccionado,false);	
+	setearFondo();
+	mostrarPredefinido(seleccionado,false);	
 
 }
 
@@ -298,6 +299,7 @@ function mostrar(){
 	var n = document.getElementById("miCanvas").offsetWidth;
   	KineticCanvas(n);
   	setearFondo();
+  	iniciar();
 }
 
 function setearFondo()
@@ -366,9 +368,7 @@ function crearTablaProductoHeader(){
 function crearTablaProductoContenido(){	
 	
 	var tabla_contenedora=$("#categoria_contenedora");
-
 	for (var cat in productos){
-		
 		var div = document.createElement("DIV");
 		div.setAttribute("id",categorias[cat].nombre);
 		div.setAttribute("class","tab-pane fade");
@@ -420,7 +420,6 @@ function crearTablaProductoContenido(){
 				}
 			}
 			tabla.appendChild(fila);
-
 
 		}
 		div.appendChild(tabla);
