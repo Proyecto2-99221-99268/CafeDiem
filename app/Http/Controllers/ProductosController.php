@@ -88,7 +88,13 @@ class ProductosController extends Controller
         if ($rta->isEmpty()){
             //puedo eliminar
             Productos::destroy($id);
+            return redirect()->to('/productos/listar');
+
         }
+        else{
+        return back()->withErrors(['field_name' => ['No se puede eliminar este producto ya que pertenece a un desayuno personalizado']]);
+        }
+
         // return $rta;
         //no puedo ya que pertenece a un desayuno personalizado
 

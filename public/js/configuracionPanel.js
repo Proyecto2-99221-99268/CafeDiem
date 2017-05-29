@@ -632,13 +632,13 @@ function comprar(){
 	tabla.appendChild(fila);
 
 
-	for(i=0; i<midesayuno.length; i++){
+	for(i in midesayuno ){
 		micateg=midesayuno[i];
-		catOpTo=opcionesTotales[i];
+		catOpTo=productos[i];
 		for(j=0; j<micateg.length; j++){
 			if(micateg[j]){
 				nombre=catOpTo[j].nombre;
-				preciop=catOpTo[j].precioPorUnidad;
+				preciop=catOpTo[j].precio;
 			//	console.log("Nombre: "+nombre+" Precio: "+preciop+"...");
 				fila=document.createElement("TR");
 				cnombre=document.createElement("TD");
