@@ -139,8 +139,17 @@ function crearTablaProductoContenido(){
 					btn.setAttribute('onclick','modificar(event)');
 					celda.appendChild(imagen);
 					celda.appendChild(btn);
+					// fila.appendChild(celda);
+					var eliminar = document.createElement("a");
+					eliminar.innerHTML="X";
+					eliminar.setAttribute("id",opciones2[k].idBD);
+					eliminar.className="btn btn-danger botonEliminarModelos";
+					var modid=opciones2[k].idBD;
+					eliminar.setAttribute("onclick", "confirmarBorrar(event)");
+					celda.appendChild(eliminar);
 					celda.appendChild(divPrecio);
 					fila.appendChild(celda);
+
 					k++;
 				}
 			}
@@ -162,7 +171,16 @@ function crearTablaProductoContenido(){
 	div.setAttribute("class","tab-pane fade active in");
 
 }
- 
+ function confirmarBorrar(event){
+ 	var target=event.target;
+	var id=target.getAttribute("id");
+	var r = confirm("¿Está seguro que desea eliminar el modelo?");
+	console.log("/productos/eliminar/"+id);
+    if (r == true) {
+		window.location.href ="/productos/eliminar/"+id;
+    }
+}
+
 function modificar (event){
 	var target=event.target;
 	while(target.tagName!="TD"){

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Productos;
 use App\Categorias;
 use App\http\Controllers\imagen;
+use App\pertenece;
 
 class ProductosController extends Controller
 {
@@ -72,7 +73,24 @@ class ProductosController extends Controller
             'precio'=>$request->precio, 'imagen' =>$IMG,'x'=>$request->x,'y'=>$request->y,'w'=>$request->w,'h'=>$request->h]
             );
         
-        return redirect()->to('/listar');
+        return redirect()->to('/productos/listar');
+    }
+    public function eliminar ($id){
+        $idCategoria=Productos::where('id',$id)->value('idCategoria');
+        $idLocal=Productos::where('id',$id)->value('idLocal');
+        // //control si existe en perteneces
+        $rta=pertenece::where('idCategoria',$idCategoria)
+                    ->where('idProductos',$idLocal)
+                    ->get();
+
+        if ($rta->isEmpty()){
+            //puedo eliminar
+            Productos::destroy($id);
+        }
+        // return $rta;
+        //no puedo ya que pertenece a un desayuno personalizado
+
+        return redirect()->to('/productos/listar');
     }
 
 

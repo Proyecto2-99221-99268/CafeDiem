@@ -103,8 +103,9 @@ function ordenarModelosUsuario(data){
 		a.innerHTML="X";
 		a.className="btn btn-danger botonEliminarModelos";
 		var modid=modeloUsuarios.id;
+		a.setAttribute('id',modid);
 		// a.setAttribute("onclick", "confirmarBorrar(modid)");
-		a.onclick=function() {confirmarBorrar(modid);};
+		a.setAttribute("onclick", "confirmarBorrar(event)");
 		but.appendChild(a);
 		modelos.appendChild(but);
 
@@ -112,9 +113,12 @@ function ordenarModelosUsuario(data){
 
 	obtenerProductosModelosUsuario();
 }
-function confirmarBorrar(id){
+function confirmarBorrar(event){
+	var target=event.target;
+	
+	var id=target.getAttribute("id");
 	var r = confirm("¿Está seguro que desea eliminar el modelo?");
-	console.log(id);
+	// console.log(id);
     if (r == true) {
 		window.location.href ="/modelosUsuario/eliminar/"+id;
     }

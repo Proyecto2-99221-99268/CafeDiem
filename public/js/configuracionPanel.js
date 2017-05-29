@@ -101,6 +101,8 @@ function ordenarProductos(data){
 			categoriaOBJ = new Array();
 			productos[catID]=categoriaOBJ;
 		}
+		var idBD = data[i].id;
+		data[i].idBD=idBD;
 		data[i].id=categoriaOBJ.length;
 		categoriaOBJ[categoriaOBJ.length]=data[i];
 
