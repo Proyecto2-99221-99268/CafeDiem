@@ -31,6 +31,7 @@ Route::get('/categorias/all', 'CategoriasController@index');
 Route::get('/productos/agregar','ProductosController@agregar');
 Route::get('/productos/listar','ProductosController@listar');
 Route::get('/productos/all', 'ProductosController@index');
+Route::post('/productos/edit', 'ProductosController@edit');
 Route::get('/productos/{id}','ProductosController@get');
 Route::get('/productos/eliminar/{id}','ProductosController@eliminar');
 Route::post('/productos/crear','ProductosController@create');

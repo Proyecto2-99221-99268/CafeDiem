@@ -56,19 +56,21 @@ class ProductosController extends Controller
     }
     public function edit (Request $request ){
         //dd($request->file('imagen'));
-        if ($request->file('imagen') == null){
-            $IMG=Productos::where('id', $request->id)->first()->select('imagen');
+        if (is_null($request->file('imagen') ) ){
+            // $IMG=Productos::where('id', $request->id)->first()->select('imagen');
+            $IMG=Productos::find($request->id)->value('imagen');
         }
         else{
-            $IMG='img/'.$request->nombre.'.'.$request->imagen->getClientOriginalExtension();
+            $IMG='/img/'.$request->imagen->getClientOriginalName();
             $imagen= request()->file('imagen');
             $nombreImagen = $request->nombre.'.'.$request->imagen->getClientOriginalExtension();
             $destinationPath = public_path('img');
             $imagen->move($destinationPath, $nombreImagen);
         }
 
-
-        $producto = Productos::where('id', $request->id)->first()
+        // return $IMG;
+        // $producto = Productos::where('id', $request->id)->first()
+        $producto = Productos::find( $request->id)
         ->update(['nombre' => $request->nombre,'idCategoria'=> $request->idCategoria,
             'precio'=>$request->precio, 'imagen' =>$IMG,'x'=>$request->x,'y'=>$request->y,'w'=>$request->w,'h'=>$request->h]
             );
