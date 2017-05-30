@@ -34,6 +34,7 @@ h4{
 h3{
 	font-family: smile;
 	font-size:40px;
+	color: white;
 }
 body{
 	background-image: url("../imagenes/fondo.jpg");
@@ -271,7 +272,7 @@ h1{
     
 }
 .form-group{
-	color: white;
+	color: #04f3ea;
 }
 .tablaEliminar{
 	color: white;
