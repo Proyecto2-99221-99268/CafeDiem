@@ -55,10 +55,10 @@ class ProductosController extends Controller
     	// dd($request);
     }
     public function edit (Request $request ){
-        //dd($request->file('imagen'));
+        // return($request->id);
         if (is_null($request->file('imagen') ) ){
-            // $IMG=Productos::where('id', $request->id)->first()->select('imagen');
-            $IMG=Productos::find($request->id)->value('imagen');
+            $IMG=Productos::where('id', $request->id)->value('imagen');
+            // $IMG=Productos::find($request->id)->select('imagen');
         }
         else{
             $IMG='/img/'.$request->imagen->getClientOriginalName();
