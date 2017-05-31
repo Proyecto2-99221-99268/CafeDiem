@@ -37,6 +37,8 @@
 		    <label for="exampleInputFile">Imagen</label>
 		    <input type="file" name="imagen">
 		  </div>
+		  <hr>
+		  <h3>Propiedades Canvas</h3>
 		  <div class="form-group">
 		    <label for="x">x</label>
 		    <input type="number" min="0" max="1" step="0.01" required class="form-control" id="x" value="{{$producto->x}}" name="x">
