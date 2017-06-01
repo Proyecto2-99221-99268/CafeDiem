@@ -89,7 +89,7 @@ $personalizados=json_decode($json3,true);
 $perteneces=json_decode($json4,true);
 $server = "localhost";
 $user = "root";
-$pass = "root";
+$pass = "";
 $bd = "desayunos";
 //Creamos la conexión
 $conexion = mysqli_connect($server, $user, $pass,$bd) 

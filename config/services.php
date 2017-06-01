@@ -30,10 +30,15 @@ return [
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
-    'facebook' => [
-    'client_id' => '1499958370015713',
-    'client_secret' => '2eac9e9ccdff0ec2cf3c20a655b797a7',
-    'redirect' => 'http://localhost/login/facebook/callback',
+  'facebook' => [
+    'client_id' => '1718180691809000',
+    'client_secret' => 'dc92bc35d810f46fccb3a40e5e978087',
+    'redirect' => 'http://node29.codenvy.io:40289/login/facebook/callback',
+],
+'twitter' =>[
+     'client_id' => 'r73lHiEbV1JK9Fv1VtMIbDE9b',
+    'client_secret' => 'ezT9VqBfzzE1pbkmpb0jvDAjkoMZkuYiwFEOUSs0SLoPzvOLcL',
+    'redirect' => 'http://node29.codenvy.io:40289/login/twitter/callback',
 ],
 
     'sparkpost' => [
